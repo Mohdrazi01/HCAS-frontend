@@ -3,5 +3,237 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "apsystem-api-client": {
+      "projectType": "library",
+      "root": "projects/apsystem-api-client",
+      "sourceRoot": "projects/apsystem-api-client/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/apsystem-api-client/tsconfig.lib.json",
+            "project": "projects/apsystem-api-client/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/apsystem-api-client/tsconfig.lib.prod.json"
+            },
+            "qa": {
+              "tsConfig": "projects/apsystem-api-client/tsconfig.lib.prod.json"
+            },
+            "dev": {
+              "tsConfig": "projects/apsystem-api-client/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apsystem-api-client/src/test.ts",
+            "tsConfig": "projects/apsystem-api-client/tsconfig.spec.json",
+            "karmaConfig": "projects/apsystem-api-client/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/apsystem-api-client/tsconfig.lib.json",
+              "projects/apsystem-api-client/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "apsystem-ui": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/apsystem-ui",
+      "sourceRoot": "projects/apsystem-ui/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+            "outputPath": "dist/apsystem-ui",
+            "index": "projects/apsystem-ui/src/index.html",
+            "main": "projects/apsystem-ui/src/main.ts",
+            "polyfills": "projects/apsystem-ui/src/polyfills.ts",
+            "tsConfig": "projects/apsystem-ui/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/apsystem-ui/src/favicon.ico",
+              "projects/apsystem-ui/src/assets",
+              "projects/apsystem-ui/src/web.config"
+            ],
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "projects/apsystem-ui/src/styles.css",
+              "projects/apsystem-ui/src/styles/style.scss"
+
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/chart.js/dist/chart.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/apsystem-ui/src/environments/environment.ts",
+                  "with": "projects/apsystem-ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/apsystem-ui/src/environments/environment.ts",
+                  "with": "projects/apsystem-ui/src/environments/environment.qa.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/apsystem-ui/src/environments/environment.ts",
+                  "with": "projects/apsystem-ui/src/environments/environment.dev.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "apsystem-ui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "apsystem-ui:build:production"
+            },
+            "qa": {
+              "browserTarget": "apsystem-ui:build:qa"
+            },
+            "dev": {
+              "browserTarget": "apsystem-ui:build:dev"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "apsystem-ui:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/apsystem-ui/src/test.ts",
+            "polyfills": "projects/apsystem-ui/src/polyfills.ts",
+            "tsConfig": "projects/apsystem-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/apsystem-ui/karma.conf.js",
+            "assets": [
+              "projects/apsystem-ui/src/favicon.ico",
+              "projects/apsystem-ui/src/assets",
+              "projects/apsystem-ui/src/web.config"
+            ],
+            "styles": [],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/apsystem-ui/tsconfig.app.json",
+              "projects/apsystem-ui/tsconfig.spec.json",
+              "projects/apsystem-ui/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/apsystem-ui/e2e/protractor.conf.js",
+            "devServerTarget": "apsystem-ui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "apsystem-ui:serve:production"
+            },
+            "qa": {
+              "devServerTarget": "apsystem-ui:serve:qa"
+            },
+            "dev": {
+              "devServerTarget": "apsystem-ui:serve:dev"
+            }
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  },
+  "defaultProject": "apsystem-ui"
+
+
 }

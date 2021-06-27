@@ -1,0 +1,8 @@
+
+{
+"$schema": "https://raw.githubusercontent.com/cyclosproject/ng-openapi-gen/master/ng-openapi-gen-schema.json",
+"input": "https://dev-api.supplier-cube.com/swagger/v1/swagger.json",
+"output": "src/lib/api"
+}
+
+
