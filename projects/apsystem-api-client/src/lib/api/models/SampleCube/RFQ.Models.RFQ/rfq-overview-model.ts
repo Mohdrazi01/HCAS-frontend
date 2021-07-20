@@ -1,0 +1,46 @@
+/* tslint:disable */
+import { RfqEstimatedTimeLineModel as SampleCubeRfqModelsRfqRfqEstimatedTimeLineModel } from '../../SampleCube/RFQ.Models.RFQ/rfq-estimated-time-line-model';
+export interface RfqOverviewModel {
+  accountId?: number;
+  bidId?: number;
+  chartStudies?: boolean;
+  clientBidNumber?: null | string;
+  clientDiscount?: number;
+  clientDiscoutApplied?: number;
+  clientId?: number;
+  clientOwnerCategoryId?: number;
+  clientProgramId?: number;
+  client_Project_Number?: null | string;
+  closeDate?: string;
+  createdBy?: number;
+  createdDate?: string;
+  currencyId?: number;
+  currencyMultiplier?: number;
+  description?: null | string;
+  endClientDiscount?: number;
+  endClientDiscountApplied?: number;
+  endClientProgramId?: number;
+  end_Client?: null | string;
+  end_ClientId?: number;
+  end_Client_Project_Number?: null | string;
+  industryId?: number;
+  isActive?: boolean;
+  isInternal?: boolean;
+  jobLocationId?: number;
+  listStudiesId?: number;
+  margin?: number;
+  name?: null | string;
+  rfqEstimatedTimeLine?: null | Array<SampleCubeRfqModelsRfqRfqEstimatedTimeLineModel>;
+  rfqId?: number;
+  rfqProposalDesc?: null | string;
+  rfqTermConditions?: null | string;
+  startDate?: string;
+  startEndDate?: string;
+  statusId?: number;
+  strCloseDate?: null | string;
+  strStartDate?: null | string;
+  supplierCurrencyId?: number;
+  tags?: null | Array<string>;
+  targetAudience?: null | string;
+  updatedBy?: number;
+}

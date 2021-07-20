@@ -1,0 +1,41 @@
+/* tslint:disable */
+import { InvoiceAttachments as SampleCubeRfqModelsInvoiceInvoiceAttachments } from '../../SampleCube/RFQ.Models.Invoice/invoice-attachments';
+import { InvoiceItem as SampleCubeRfqModelsInvoiceInvoiceItem } from '../../SampleCube/RFQ.Models.Invoice/invoice-item';
+export interface CreateInvoiceRequest {
+  approverEmail?: null | string;
+  attachment?: null | string;
+  billingNumber?: null | string;
+  categoryId?: number;
+  companyId?: number;
+  createdBy?: number;
+  currencyId?: number;
+  frequency?: null | string;
+  glAccountName?: null | string;
+  glNumber?: number;
+  glnsInternalId?: number;
+  invoiceApproverEmail?: null | string;
+  invoiceAttachments?: null | Array<SampleCubeRfqModelsInvoiceInvoiceAttachments>;
+  invoiceDate?: string;
+  invoiceItems?: null | Array<SampleCubeRfqModelsInvoiceInvoiceItem>;
+  invoiceNumber?: null | string;
+  isActive?: boolean;
+  locationId?: number;
+  locationNSInternalId?: number;
+  month?: number;
+  nsInternalId?: number;
+  pandHOptionsId?: null | number;
+  paymentTerm?: number;
+  poNumber?: null | string;
+  projectId?: null | number;
+  purchaseOrderId?: null | number;
+  remark?: null | string;
+  serviceMonth?: null | string;
+  statusId?: number;
+  strInvoiceDate?: null | string;
+  subsidiaryNSInternalId?: number;
+  supplierId?: number;
+  supplierInvoiceGUID?: null | string;
+  supplierInvoiceId?: number;
+  updatedBy?: number;
+  year?: number;
+}

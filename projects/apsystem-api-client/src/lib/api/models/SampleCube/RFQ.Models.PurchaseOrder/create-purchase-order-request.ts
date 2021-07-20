@@ -1,0 +1,40 @@
+/* tslint:disable */
+import { ItemLists as SampleCubeRfqModelsPurchaseOrderItemLists } from '../../SampleCube/RFQ.Models.PurchaseOrder/item-lists';
+import { SupplierDetails as SampleCubeRfqModelsPurchaseOrderSupplierDetails } from '../../SampleCube/RFQ.Models.PurchaseOrder/supplier-details';
+export interface CreatePurchaseOrderRequest {
+  adminStatus?: null | number;
+  billingAddress?: null | string;
+  companyId?: number;
+  contactPerson?: null | string;
+  createdBy?: number;
+  currencyId?: number;
+  email?: null | string;
+  expiryDate?: string;
+  glAccountName?: null | string;
+  glNumber?: number;
+  glnsInternalId?: number;
+  isActive?: boolean;
+  isRevised?: boolean;
+  itemLists?: null | Array<SampleCubeRfqModelsPurchaseOrderItemLists>;
+  locationId?: number;
+  locationNSInternalId?: number;
+  managerApprover?: null | string;
+  name?: null | string;
+  nsInternalId?: number;
+  paymentTerms?: number;
+  poAmount?: number;
+  poApproved?: null | string;
+  poApprover?: null | string;
+  poApproverEmail?: null | string;
+  purchaseOrderGuid?: string;
+  purchaseOrderId?: number;
+  remarks?: null | string;
+  shippingAddress?: null | string;
+  shortName?: null | string;
+  statusId?: number;
+  strExpiryDate?: null | string;
+  subsidiaryNSInternalId?: number;
+  supplierDetails?: SampleCubeRfqModelsPurchaseOrderSupplierDetails;
+  supplierId?: number;
+  updatedBy?: number;
+}

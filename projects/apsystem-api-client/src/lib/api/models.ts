@@ -1,5 +1,10 @@
 export { AppError } from './models/app-error';
+export { Appointments as ApSystemModelsAppointmentAppointments } from './models/APSystem/Models.Appointment/appointments';
+export { AppointmentSlots as ApSystemModelsAppointmentAppointmentSlots } from './models/APSystem/Models.Appointment/appointment-slots';
+export { AppointmentwithSlotsjoin as ApSystemModelsAppointmentAppointmentwithSlotsjoin } from './models/APSystem/Models.Appointment/appointmentwith-slotsjoin';
 export { AuthRequest as ApSystemModelsAuthAuthRequest } from './models/APSystem/Models.Auth/auth-request';
 export { AuthResponse as ApSystemModelsAuthAuthResponse } from './models/APSystem/Models.Auth/auth-response';
 export { RegisterUserRequest as ApSystemModelsAuthRegisterUserRequest } from './models/APSystem/Models.Auth/register-user-request';
 export { RegisterUserResponse as ApSystemModelsAuthRegisterUserResponse } from './models/APSystem/Models.Auth/register-user-response';
+export { BookingAppointment as ApSystemModelsBookingsBookingAppointment } from './models/APSystem/Models.Bookings/booking-appointment';
+export { TimeSpan as SystemTimeSpan } from './models/System/time-span';

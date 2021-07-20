@@ -3,7 +3,9 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
+import { AppointmentService } from './services/appointment.service';
 import { AuthService } from './services/auth.service';
+import { BookingsService } from './services/bookings.service';
 
 /**
  * Module that provides all services and configuration.
@@ -13,7 +15,9 @@ import { AuthService } from './services/auth.service';
   exports: [],
   declarations: [],
   providers: [
+    AppointmentService,
     AuthService,
+    BookingsService,
     ApiConfiguration
   ],
 })

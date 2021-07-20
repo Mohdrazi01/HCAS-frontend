@@ -2,6 +2,7 @@
  * Public API Surface of apsystem-api-client
  */
 
-export * from './lib/apsystem-api-client.service';
-export * from './lib/apsystem-api-client.component';
-export * from './lib/apsystem-api-client.module';
+export * from './lib/api/api.module';
+export * from './lib/api/services';
+export * from './lib/api/models';
+export * from './lib/api/api-configuration';

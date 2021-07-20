@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: "https://localhost:5001/",
+  apiBaseUrl: "https://localhost:5001",
   appInsights: {
     instrumentationKey: "14c68382-bf0a-4dab-b0ca-c9d07c8f18ed",
     disableAjaxTracking: false,
