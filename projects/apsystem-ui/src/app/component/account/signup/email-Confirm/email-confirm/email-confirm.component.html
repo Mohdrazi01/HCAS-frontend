@@ -1,0 +1,12 @@
+<div>
+  <div class="col-md-6 offset-md-3 mt-4">
+        <h3>HCAS Email Confirmation Page</h3>
+        <div *ngIf="emailconfirmed" class="alert alert-primary" role="alert">
+          Email confirmed
+        </div>
+        <div *ngIf="!emailconfirmed" class="alert alert-warning" role="alert">
+          unable to confirm Email
+        </div>
+
+  </div>
+</div>

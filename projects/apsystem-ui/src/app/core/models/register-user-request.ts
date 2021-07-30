@@ -1,13 +1,14 @@
 export class RegisterUserRequest {
-  address?: null | string;
+  name?: null | string;
   dateOfBirth?: string;
   email?: null | string;
-  experience?: null | string;
-  gender?: number;
-  gmcNumber?: null | number;
-  name?: null | string;
   password?: null | string;
+  gender?: number;
   phoneNumber?: null | string;
   roleID?: number;
+  gmcNumber?: null | number;
   speciality?: null | string;
+  experience?: null | string;
+  address?: null | string;
+  
 }

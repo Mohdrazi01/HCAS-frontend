@@ -1,5 +1,5 @@
 {
-  "name": "apsystem-ui",
+  "name": "HCAS",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -47,11 +47,13 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "@rxweb/reactive-form-validators": "^2.1.3",
     "@techiediaries/ngx-textarea-autosize": "^1.3.0",
+    "alertifyjs": "^1.13.1",
     "angular-inline-editable-table": "^2.0.0",
     "bootstrap": "^4.5.2",
     "chart.js": "^2.9.4",
     "exceljs": "^4.2.1",
     "file-saver": "^2.0.2",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "jwt-decode": "^2.2.0",
     "macaddress": "^0.5.2",

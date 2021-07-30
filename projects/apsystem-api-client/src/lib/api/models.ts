@@ -4,7 +4,10 @@ export { AppointmentSlots as ApSystemModelsAppointmentAppointmentSlots } from '.
 export { AppointmentwithSlotsjoin as ApSystemModelsAppointmentAppointmentwithSlotsjoin } from './models/APSystem/Models.Appointment/appointmentwith-slotsjoin';
 export { AuthRequest as ApSystemModelsAuthAuthRequest } from './models/APSystem/Models.Auth/auth-request';
 export { AuthResponse as ApSystemModelsAuthAuthResponse } from './models/APSystem/Models.Auth/auth-response';
+export { GenderService as ApSystemModelsAuthGenderService } from './models/APSystem/Models.Auth/gender-service';
 export { RegisterUserRequest as ApSystemModelsAuthRegisterUserRequest } from './models/APSystem/Models.Auth/register-user-request';
 export { RegisterUserResponse as ApSystemModelsAuthRegisterUserResponse } from './models/APSystem/Models.Auth/register-user-response';
+export { RoleService as ApSystemModelsAuthRoleService } from './models/APSystem/Models.Auth/role-service';
+export { UserService as ApSystemModelsAuthUserService } from './models/APSystem/Models.Auth/user-service';
 export { BookingAppointment as ApSystemModelsBookingsBookingAppointment } from './models/APSystem/Models.Bookings/booking-appointment';
 export { TimeSpan as SystemTimeSpan } from './models/System/time-span';
