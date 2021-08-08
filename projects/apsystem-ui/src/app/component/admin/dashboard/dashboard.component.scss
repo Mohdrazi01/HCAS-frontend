@@ -1,0 +1,83 @@
+#propImage{
+  height: 130px;
+  width: 120;
+  overflow: hidden;
+  position: relative;
+
+}
+.container{
+  bottom: 200px;
+  height: 1000px;
+
+}
+
+.row{
+  position: relative;
+  top:100px;
+}
+
+.card:hover img{
+  transform: scale(1.2,1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+
+.card img{
+  transform: scale(1,1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+
+#doctorcard{
+  position: relative;
+
+}
+
+.card{
+position: relative;
+text-align: left;
+margin-bottom: 20px;
+box-shadow:5px 5px 15px rgb(155, 155, 236);
+}
+.img-wrapper{
+  overflow: hidden;
+  position: relative;
+}
+
+.member-icons{
+  position: absolute;
+  bottom:-15;
+  left:0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-wrapper:hover .member-icons{
+ bottom:0;
+}
+
+.animate{
+  transition: all 0.3s ease-in-out;
+  transition-timing-function: ease-out;
+  transition-duration: 500ms;
+}
+
+.search{
+  position:relative;
+  bottom: 60px;
+  left: 300px;
+
+}
+
+.search:hover{
+  transform: scale(1.2,1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+.search{
+  transform: scale(1,1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+

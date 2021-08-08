@@ -4,10 +4,12 @@ export { AppointmentSlots as ApSystemModelsAppointmentAppointmentSlots } from '.
 export { AppointmentwithSlotsjoin as ApSystemModelsAppointmentAppointmentwithSlotsjoin } from './models/APSystem/Models.Appointment/appointmentwith-slotsjoin';
 export { AuthRequest as ApSystemModelsAuthAuthRequest } from './models/APSystem/Models.Auth/auth-request';
 export { AuthResponse as ApSystemModelsAuthAuthResponse } from './models/APSystem/Models.Auth/auth-response';
-export { GenderService as ApSystemModelsAuthGenderService } from './models/APSystem/Models.Auth/gender-service';
+export { EmailConfirmationResponse as ApSystemModelsAuthEmailConfirmationResponse } from './models/APSystem/Models.Auth/email-confirmation-response';
+export { GenderResponse as ApSystemModelsAuthGenderResponse } from './models/APSystem/Models.Auth/gender-response';
 export { RegisterUserRequest as ApSystemModelsAuthRegisterUserRequest } from './models/APSystem/Models.Auth/register-user-request';
 export { RegisterUserResponse as ApSystemModelsAuthRegisterUserResponse } from './models/APSystem/Models.Auth/register-user-response';
-export { RoleService as ApSystemModelsAuthRoleService } from './models/APSystem/Models.Auth/role-service';
-export { UserService as ApSystemModelsAuthUserService } from './models/APSystem/Models.Auth/user-service';
+export { RoleResponse as ApSystemModelsAuthRoleResponse } from './models/APSystem/Models.Auth/role-response';
+export { UserDetailsRequest as ApSystemModelsAuthUserDetailsRequest } from './models/APSystem/Models.Auth/user-details-request';
+export { UserDetailsResponse as ApSystemModelsAuthUserDetailsResponse } from './models/APSystem/Models.Auth/user-details-response';
+export { AppointmentTypes as ApSystemModelsBookingsAppointmentTypes } from './models/APSystem/Models.Bookings/appointment-types';
 export { BookingAppointment as ApSystemModelsBookingsBookingAppointment } from './models/APSystem/Models.Bookings/booking-appointment';
-export { TimeSpan as SystemTimeSpan } from './models/System/time-span';

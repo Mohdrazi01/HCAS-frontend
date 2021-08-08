@@ -1,3 +1,126 @@
-<p>
-  bookings-management works!
-</p>
+<div class="container">
+  <div id="banner" class="card-header">
+    <h2>List of available Appointments.</h2>
+    <h6>Plase click on the appointment slot to create a new appointment.</h6>
+  </div>
+<div class="search">
+  <div class="form-group search col-md-5">
+    <input type="text" class="form-control" value="" placeholder="Search">
+  </div>
+  </div>
+
+<div class="row">
+  <div class="clo-6 m-auto">
+        <div class="card m-auto">
+          <div class="card-header image">
+           <h2> Details</h2>
+          </div>
+            <div class="card-body">
+              <div>
+              <label class="form-label table-striped"><h5>Name: {{user.name}}</h5></label>
+            </div>
+              <div>
+              <label class="form-label table-striped"><h5>Gender: {{user.genderName}}</h5></label>
+            </div>
+              <div>
+              <label class="form-label table-striped"><h6>Email Address: {{user.email}}</h6></label>
+            </div>
+              <div>
+              <label class="form-label"><h5>GMC Number: {{user.gmcNumber}}</h5></label>
+            </div>
+              <div>
+              <label class="form-label table-striped"><h6>Role: {{user.roleName}}</h6></label>
+               </div>
+              <div>
+              <label class="form-label table-striped"><h6>Speciality: {{user.speciality}}</h6></label>
+              </div>
+              <div>
+              <label class="form-label table-striped"><h6>Experience: {{user.experience}}</h6></label>
+               </div>
+              <div>
+              <label class="form-label table-striped"><h6>Address: {{user.address}}</h6></label>
+            </div>
+            </div>
+            <div class="card-footer" height="50px">
+
+            </div>
+        </div>
+  </div>
+  </div>
+  <span hidden>
+    Please Click on the appointment slot to create booking.
+</span>
+<div>
+  <div class="row1">
+
+              <div class="card-body-table">
+                <table class="table table-striped table-light bg-blue">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Start Time</th>
+                      <th scope="col">End Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-toggle="modal" data-target="#exampleModalCenter" *ngFor="let appointmemts of listofAppointments">
+                      <td  (click)="callbookingsform(appointmemts)" scope="row">{{appointmemts.appointmentDate| date:'dd/MM/yyyy'}}</td>
+                      <td (click)="callbookingsform(appointmemts)" scope="row">{{appointmemts.appointmentStartTime}}</td>
+                      <td (click)="callbookingsform(appointmemts)" scope="row">{{appointmemts.appointmentEndTime}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+  </div>
+</div>
+<button (click)="goBack()" class="btn btn-primary">Back</button>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="card">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-calendar-plus"></i> Create New Booking </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <tr><h5 style="font:bold;">Appointment Date: {{selectedAppointment.appointmentDate| date}}</h5></tr>
+              <tr><h6> Appointment Start Time: {{selectedAppointment.appointmentStartTime}}</h6></tr>
+              <tr><h6>Appointment End Time: {{selectedAppointment.appointmentEndTime}}</h6></tr>
+         </div>
+         <form [formGroup]="bookingForm">
+          <div class="modal-body">
+               <label class="form-label">Phone Number</label>
+              <input id="phoneNumber" name="PhoneNumber" type="text" class="form-control" formControlName="phoneNumber"/>
+          </div>
+          <div class="modal-body">
+            <label class="form-label">Problem Discription</label>
+            <textarea id="problemDiscription" name="ProblemDiscription" type="text" class="form-control" formControlName="problemDiscription"></textarea>
+          </div>
+          <div class="modal-body">
+
+            <select id="problemDiscription" name="ProblemDiscription" type="text" class="form-control" formControlName="appointmentTypeID">
+              <option value="">Select Appointment Type</option>
+              <option *ngFor="let aptype of listofAppointmentTypes" value="{{aptype.appointmentTypeID}}">{{aptype.appointmentType}}</option>
+            </select>
+
+          </div>
+
+          <div class="modal-footer">
+              <button type="button" (click)="createBooking()" class="btn btn-primary" id="btnAddStream">Create Booking</button>
+              <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <div id="loading" *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+          </div>
+        </form>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- <h4>{{doctorandNurseID}}</h4> -->
+</div>

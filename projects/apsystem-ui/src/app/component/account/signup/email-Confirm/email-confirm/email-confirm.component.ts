@@ -13,7 +13,7 @@ import * as alertify from 'alertifyjs';
 })
 export class EmailConfirmComponent implements OnInit {
   emailconfirmed: boolean = false;
-  url: EmailModel = new EmailModel();
+  emailActivationCode: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,37 +22,39 @@ export class EmailConfirmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.url.emailActivationCode =  this.route.snapshot.queryParamMap.get('emailActivationCode');
-    console.warn(this.url);
+    this. emailActivationCode =  this.route.snapshot.queryParamMap.get('emailActivationCode');
+    console.warn(this. emailActivationCode);
     this.confirmEnail();
   }
 
-  // tslint:disable-next-line: typedef
    confirmEnail(){
-  //   this.accountservice.emailConfirmation(this.url).subscribe(
-  //      response=>{
-  //        console.warn(response);
-  //        alertify.success(response);
-  //        this.emailconfirmed = true;
-  //      },
-  //      (error: any)=>{
-  //         alertify.error(' Unable to confirm email ' + error.error.appError.description,1000);
 
-  //      }
+    // this.accountservice.emailConfirmation(this.emailActivationCode).subscribe(
+    //    response => {
+    //      console.warn(response);
+    //      alertify.success(response);
+    //      this.emailconfirmed = true;
+    //    },
+    //    (error: any) => {
+    //       alertify.error(' Unable to confirm email ' + error.error.appError.description, 1000);
 
-  //   );
-// this.authservice.apiV1AuthEmailConfirmationPost$Json$Response(this.url).subscribe(
-//         response => {
-//           console.warn(response);
-//               alertify.success(response);
-//               this.emailconfirmed = true;
-//              },
-//              (error: any)=>{
-//                 alertify('Unable to confirm email' + error);
-//         }
-//     )
+    //    }
+
+    // );
 
 
-  }
+    this.authservice.apiV1AuthEmailConfirmationPost$Json$Response({emailActivationCode: this.emailActivationCode}).subscribe(
+            (response: any) => {
+              console.warn(response);
+              alertify.success(response.body, 3000);
+              this.emailconfirmed = true;
+                },
+                (error: any) => {
+                    alertify('Unable to confirm email' + error, 3000);
+            }
+        );
+
+
+      }
 
 }

@@ -1,7 +1,10 @@
 /* tslint:disable */
-import { TimeSpan as SystemTimeSpan } from '../../System/time-span';
+import { AppError } from '../../app-error';
 export interface AppointmentSlots {
-  appointmentEndTime?: SystemTimeSpan;
+  appError?: AppError;
+  appointmentEndTime?: null | string;
   appointmentSlotID?: number;
-  appointmentStartTime?: SystemTimeSpan;
+  appointmentStartTime?: null | string;
+  success?: boolean;
+  traceIdentifier?: null | string;
 }

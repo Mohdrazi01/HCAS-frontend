@@ -2,34 +2,50 @@
 <div class="row">
   <div class="col-5 m-auto">
   <div class="card m-auto">
-    <div class="card-header">
+    <div class="card-header image">
       <h3 class="card-title">Signup</h3>
     </div>
-    <div class="card-body shadow-lg">
+    <div class="card-body">
       <form id="Signupform" [formGroup]="userform" (ngSubmit)="onSubmit()">
         <div class="form-group col-12">
-            <label for="name" class="form-label">Name</label>
+
+            <label for="name" *ngIf="!userform.get('name').valid" class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="name">
+            <span *ngIf="!userform.get('name').valid && userform.get('name').touched" class="error-block">
+              Please provide Name
+            </span>
         </div>
 
         <div id="div1" class="form-group col-md-6">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" formControlName="email">
+          <!-- <span *ngIf="!userform.get('email').valid && userform.get('email').touched" class="error-block">
+            Please provide Email
+          </span> -->
         </div>
 
         <div id="div2" class="form-group col-md-6">
           <label for="passwrod" class="form-label">Password</label>
           <input type="password" class="form-control" formControlName="password">
+          <!-- <span *ngIf="!userform.get('password').valid && userform.get('password').touched" class="error-block">
+            Please provide Password
+          </span> -->
         </div>
 
         <div id="phoneDiv" class="form-group col-md-6">
           <label for="phonenumber" class="form-label">PhoneNumber</label>
           <input type="text" class="form-control" formControlName="phonenumber">
+          <!-- <span *ngIf="!userform.get('phonenumber').valid && userform.get('phonenumber').touched" class="error-block">
+            Please provide Phone Number
+          </span> -->
         </div>
 
         <div id="DobDiv" class="form-group col-md-6">
           <label for="dateofbirth" class="form-label">Date of Birth</label>
           <input type="date" class="form-control" formControlName="dateofbirth">
+          <!-- <span *ngIf="!userform.get('dateofbirth').valid && userform.get('dateofbirth').touched" class="error-block">
+            Please provide Date Of Birth
+          </span> -->
         </div>
 
         <div id="DobDiv" class="form-group col-md-6">
@@ -38,6 +54,9 @@
                   <option value="">Select</option>
                   <option *ngFor="let gen of listGender" value="{{gen.genderId}}" >{{gen.genderName}}</option>
           </select>
+          <!-- <span *ngIf="!userform.get('gender').valid && userform.get('gender').touched" class="error-block">
+            Please select your gender
+          </span> -->
         </div>
 
         <div id="DobDiv" class="form-group col-md-6">
@@ -46,35 +65,56 @@
             <option value="">Select</option>
             <option *ngFor="let role of listRoles" value="{{role.roleID}}" >{{role.roleName}}</option>
           </select>
+          <!-- <span *ngIf="!userform.get('roleid').valid && userform.get('roleid').touched" class="error-block">
+            Please select your role
+          </span> -->
         </div>
 
         <div id="DobDiv" *ngIf="isDoctor" class="form-group col-12">
-          <label for="gmcnumber" class="form-label">GMC Number</label>
+          <label for="gmcnumber" class="form-label">GMC Number / PIN Number</label>
           <input type="number" class="form-control" formControlName="gmcnumber">
+           <span *ngIf="!userform.get('gmcnumber').valid && userform.get('gmcnumber').touched" class="error-block">
+            Please enter your GMC or PIN number.
+          </span>
         </div>
 
         <div  id="DobDiv" *ngIf="isDoctor" class="form-group col-12">
           <label for="speciality" class="form-label">Speciality</label>
           <input type="text" class="form-control" formControlName="speciality">
+          <span *ngIf="!userform.get('speciality').valid && userform.get('speciality').touched" class="error-block">
+            Please enter your speciality.
+          </span>
         </div>
 
         <div id="DobDiv" *ngIf="isDoctor" class="form-group col-12">
           <label for="experience" class="form-label">Experience</label>
           <input type="text" class="form-control" formControlName="experience">
+           <span *ngIf="!userform.get('experience').valid && userform.get('experience').touched" class="error-block">
+            Please enter your experience.
+          </span>
         </div>
 
         <div *ngIf="isDoctor" class="form-group col-12">
           <label for="address" class="form-label">Address</label>
           <input type="text" class="form-control" formControlName="address" placeholder="M14 4xy Some street">
+           <span *ngIf="!userform.get('address').valid && userform.get('address').touched" class="error-block">
+            Please enter your address
+          </span>
         </div>
         <div  class="form-group col-12">
-          <input type="checkbox" id="TnC" />
-          <label for="TnC" class="link active form-label"> Terms & Conditons</label>
+          <input type="checkbox" required id="TnC" formControlName="checkbox"/>
+          <label for="TnC"  class="link active form-label"> Terms & Conditons</label>
+            <span *ngIf="!userform.get('checkbox').valid && userform.get('checkbox').touched" class="error-block">
+            Please tick the box.
+          </span>
         </div>
 
         <div  class="form-group col-12">
-          <p><button [disabled]="!userform.valid" type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Signup</button>
-          <button type="reset" class="btn btn-secondary ml-2"><i class="fas fa-eraser"></i> Cancel</button></p>
+          <button  (click)="onClick()" type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Signup</button>
+          <button type="reset" class="btn btn-secondary ml-2"><i class="fas fa-eraser"></i> Cancel</button>
+          <div id="loading" *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
         <div class="form-group col-12 m-1">
           <a routerLink="/login">Already a member? Login</a>

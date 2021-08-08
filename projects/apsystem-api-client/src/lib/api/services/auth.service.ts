@@ -10,11 +10,13 @@ import { map, filter } from 'rxjs/operators';
 
 import { AuthRequest as ApSystemModelsAuthAuthRequest } from '../models/APSystem/Models.Auth/auth-request';
 import { AuthResponse as ApSystemModelsAuthAuthResponse } from '../models/APSystem/Models.Auth/auth-response';
-import { GenderService as ApSystemModelsAuthGenderService } from '../models/APSystem/Models.Auth/gender-service';
+import { EmailConfirmationResponse as ApSystemModelsAuthEmailConfirmationResponse } from '../models/APSystem/Models.Auth/email-confirmation-response';
+import { GenderResponse as ApSystemModelsAuthGenderResponse } from '../models/APSystem/Models.Auth/gender-response';
 import { RegisterUserRequest as ApSystemModelsAuthRegisterUserRequest } from '../models/APSystem/Models.Auth/register-user-request';
 import { RegisterUserResponse as ApSystemModelsAuthRegisterUserResponse } from '../models/APSystem/Models.Auth/register-user-response';
-import { RoleService as ApSystemModelsAuthRoleService } from '../models/APSystem/Models.Auth/role-service';
-import { UserService as ApSystemModelsAuthUserService } from '../models/APSystem/Models.Auth/user-service';
+import { RoleResponse as ApSystemModelsAuthRoleResponse } from '../models/APSystem/Models.Auth/role-response';
+import { UserDetailsRequest as ApSystemModelsAuthUserDetailsRequest } from '../models/APSystem/Models.Auth/user-details-request';
+import { UserDetailsResponse as ApSystemModelsAuthUserDetailsResponse } from '../models/APSystem/Models.Auth/user-details-response';
 
 @Injectable({
   providedIn: 'root',
@@ -218,7 +220,7 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllUsersGet$Plain$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllUsersGetPath, 'get');
     if (params) {
@@ -231,7 +233,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>;
       })
     );
   }
@@ -244,10 +246,10 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllUsersGet$Plain(params?: {
 
-  }): Observable<Array<ApSystemModelsAuthUserService>> {
+  }): Observable<Array<ApSystemModelsAuthUserDetailsResponse>> {
 
     return this.apiV1AuthGetAllUsersGet$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserService>>) => r.body as Array<ApSystemModelsAuthUserService>)
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>) => r.body as Array<ApSystemModelsAuthUserDetailsResponse>)
     );
   }
 
@@ -259,7 +261,7 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllUsersGet$Json$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllUsersGetPath, 'get');
     if (params) {
@@ -272,7 +274,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>;
       })
     );
   }
@@ -285,30 +287,30 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllUsersGet$Json(params?: {
 
-  }): Observable<Array<ApSystemModelsAuthUserService>> {
+  }): Observable<Array<ApSystemModelsAuthUserDetailsResponse>> {
 
     return this.apiV1AuthGetAllUsersGet$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserService>>) => r.body as Array<ApSystemModelsAuthUserService>)
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>) => r.body as Array<ApSystemModelsAuthUserDetailsResponse>)
     );
   }
 
   /**
-   * Path part for operation apiV1AuthUserbyIdPost
+   * Path part for operation apiV1AuthUserbyIdGet
    */
-  static readonly ApiV1AuthUserbyIdPostPath = '/api/v1/Auth/UserbyID';
+  static readonly ApiV1AuthUserbyIdGetPath = '/api/v1/Auth/UserbyID';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1AuthUserbyIdPost$Plain()` instead.
+   * To access only the response body, use `apiV1AuthUserbyIdGet$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUserbyIdPost$Plain$Response(params?: {
+  apiV1AuthUserbyIdGet$Plain$Response(params?: {
     userID?: number;
 
-  }): Observable<StrictHttpResponse<ApSystemModelsAuthUserService>> {
+  }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUserbyIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUserbyIdGetPath, 'get');
     if (params) {
 
       rb.query('userID', params.userID, {});
@@ -320,39 +322,39 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<ApSystemModelsAuthUserService>;
+        return r as StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>;
       })
     );
   }
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1AuthUserbyIdPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1AuthUserbyIdGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUserbyIdPost$Plain(params?: {
+  apiV1AuthUserbyIdGet$Plain(params?: {
     userID?: number;
 
-  }): Observable<ApSystemModelsAuthUserService> {
+  }): Observable<ApSystemModelsAuthUserDetailsResponse> {
 
-    return this.apiV1AuthUserbyIdPost$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<ApSystemModelsAuthUserService>) => r.body as ApSystemModelsAuthUserService)
+    return this.apiV1AuthUserbyIdGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>) => r.body as ApSystemModelsAuthUserDetailsResponse)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1AuthUserbyIdPost$Json()` instead.
+   * To access only the response body, use `apiV1AuthUserbyIdGet$Json()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUserbyIdPost$Json$Response(params?: {
+  apiV1AuthUserbyIdGet$Json$Response(params?: {
     userID?: number;
 
-  }): Observable<StrictHttpResponse<ApSystemModelsAuthUserService>> {
+  }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUserbyIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUserbyIdGetPath, 'get');
     if (params) {
 
       rb.query('userID', params.userID, {});
@@ -364,44 +366,44 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<ApSystemModelsAuthUserService>;
+        return r as StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>;
       })
     );
   }
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1AuthUserbyIdPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1AuthUserbyIdGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUserbyIdPost$Json(params?: {
+  apiV1AuthUserbyIdGet$Json(params?: {
     userID?: number;
 
-  }): Observable<ApSystemModelsAuthUserService> {
+  }): Observable<ApSystemModelsAuthUserDetailsResponse> {
 
-    return this.apiV1AuthUserbyIdPost$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<ApSystemModelsAuthUserService>) => r.body as ApSystemModelsAuthUserService)
+    return this.apiV1AuthUserbyIdGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>) => r.body as ApSystemModelsAuthUserDetailsResponse)
     );
   }
 
   /**
-   * Path part for operation apiV1AuthUsersbyRoleIdPost
+   * Path part for operation apiV1AuthUsersbyRoleIdGet
    */
-  static readonly ApiV1AuthUsersbyRoleIdPostPath = '/api/v1/Auth/UsersbyRoleID';
+  static readonly ApiV1AuthUsersbyRoleIdGetPath = '/api/v1/Auth/UsersbyRoleID';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1AuthUsersbyRoleIdPost$Plain()` instead.
+   * To access only the response body, use `apiV1AuthUsersbyRoleIdGet$Plain()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUsersbyRoleIdPost$Plain$Response(params?: {
+  apiV1AuthUsersbyRoleIdGet$Plain$Response(params?: {
     roleID?: number;
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUsersbyRoleIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUsersbyRoleIdGetPath, 'get');
     if (params) {
 
       rb.query('roleID', params.roleID, {});
@@ -413,39 +415,39 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>;
       })
     );
   }
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1AuthUsersbyRoleIdPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1AuthUsersbyRoleIdGet$Plain$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUsersbyRoleIdPost$Plain(params?: {
+  apiV1AuthUsersbyRoleIdGet$Plain(params?: {
     roleID?: number;
 
-  }): Observable<Array<ApSystemModelsAuthUserService>> {
+  }): Observable<Array<ApSystemModelsAuthUserDetailsResponse>> {
 
-    return this.apiV1AuthUsersbyRoleIdPost$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserService>>) => r.body as Array<ApSystemModelsAuthUserService>)
+    return this.apiV1AuthUsersbyRoleIdGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>) => r.body as Array<ApSystemModelsAuthUserDetailsResponse>)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1AuthUsersbyRoleIdPost$Json()` instead.
+   * To access only the response body, use `apiV1AuthUsersbyRoleIdGet$Json()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUsersbyRoleIdPost$Json$Response(params?: {
+  apiV1AuthUsersbyRoleIdGet$Json$Response(params?: {
     roleID?: number;
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUsersbyRoleIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUsersbyRoleIdGetPath, 'get');
     if (params) {
 
       rb.query('roleID', params.roleID, {});
@@ -457,24 +459,111 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>;
       })
     );
   }
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1AuthUsersbyRoleIdPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1AuthUsersbyRoleIdGet$Json$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiV1AuthUsersbyRoleIdPost$Json(params?: {
+  apiV1AuthUsersbyRoleIdGet$Json(params?: {
     roleID?: number;
 
-  }): Observable<Array<ApSystemModelsAuthUserService>> {
+  }): Observable<Array<ApSystemModelsAuthUserDetailsResponse>> {
 
-    return this.apiV1AuthUsersbyRoleIdPost$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserService>>) => r.body as Array<ApSystemModelsAuthUserService>)
+    return this.apiV1AuthUsersbyRoleIdGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>) => r.body as Array<ApSystemModelsAuthUserDetailsResponse>)
+    );
+  }
+
+  /**
+   * Path part for operation apiV1AuthGetDoctorsandNursesGet
+   */
+  static readonly ApiV1AuthGetDoctorsandNursesGetPath = '/api/v1/Auth/GetDoctorsandNurses';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1AuthGetDoctorsandNursesGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1AuthGetDoctorsandNursesGet$Plain$Response(params?: {
+
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetDoctorsandNursesGetPath, 'get');
+    if (params) {
+
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1AuthGetDoctorsandNursesGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1AuthGetDoctorsandNursesGet$Plain(params?: {
+
+  }): Observable<Array<ApSystemModelsAuthUserDetailsResponse>> {
+
+    return this.apiV1AuthGetDoctorsandNursesGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>) => r.body as Array<ApSystemModelsAuthUserDetailsResponse>)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1AuthGetDoctorsandNursesGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1AuthGetDoctorsandNursesGet$Json$Response(params?: {
+
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetDoctorsandNursesGetPath, 'get');
+    if (params) {
+
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1AuthGetDoctorsandNursesGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1AuthGetDoctorsandNursesGet$Json(params?: {
+
+  }): Observable<Array<ApSystemModelsAuthUserDetailsResponse>> {
+
+    return this.apiV1AuthGetDoctorsandNursesGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>) => r.body as Array<ApSystemModelsAuthUserDetailsResponse>)
     );
   }
 
@@ -491,7 +580,7 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllRolesGet$Plain$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthRoleService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllRolesGetPath, 'get');
     if (params) {
@@ -504,7 +593,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthRoleService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>;
       })
     );
   }
@@ -517,10 +606,10 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllRolesGet$Plain(params?: {
 
-  }): Observable<Array<ApSystemModelsAuthRoleService>> {
+  }): Observable<Array<ApSystemModelsAuthRoleResponse>> {
 
     return this.apiV1AuthGetAllRolesGet$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthRoleService>>) => r.body as Array<ApSystemModelsAuthRoleService>)
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>) => r.body as Array<ApSystemModelsAuthRoleResponse>)
     );
   }
 
@@ -532,7 +621,7 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllRolesGet$Json$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthRoleService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllRolesGetPath, 'get');
     if (params) {
@@ -545,7 +634,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthRoleService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>;
       })
     );
   }
@@ -558,10 +647,10 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllRolesGet$Json(params?: {
 
-  }): Observable<Array<ApSystemModelsAuthRoleService>> {
+  }): Observable<Array<ApSystemModelsAuthRoleResponse>> {
 
     return this.apiV1AuthGetAllRolesGet$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthRoleService>>) => r.body as Array<ApSystemModelsAuthRoleService>)
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>) => r.body as Array<ApSystemModelsAuthRoleResponse>)
     );
   }
 
@@ -578,7 +667,7 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllGendersGet$Plain$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthGenderService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllGendersGetPath, 'get');
     if (params) {
@@ -591,7 +680,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthGenderService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>;
       })
     );
   }
@@ -604,10 +693,10 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllGendersGet$Plain(params?: {
 
-  }): Observable<Array<ApSystemModelsAuthGenderService>> {
+  }): Observable<Array<ApSystemModelsAuthGenderResponse>> {
 
     return this.apiV1AuthGetAllGendersGet$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthGenderService>>) => r.body as Array<ApSystemModelsAuthGenderService>)
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>) => r.body as Array<ApSystemModelsAuthGenderResponse>)
     );
   }
 
@@ -619,7 +708,7 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllGendersGet$Json$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthGenderService>>> {
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllGendersGetPath, 'get');
     if (params) {
@@ -632,7 +721,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<ApSystemModelsAuthGenderService>>;
+        return r as StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>;
       })
     );
   }
@@ -645,10 +734,10 @@ export class AuthService extends BaseService {
    */
   apiV1AuthGetAllGendersGet$Json(params?: {
 
-  }): Observable<Array<ApSystemModelsAuthGenderService>> {
+  }): Observable<Array<ApSystemModelsAuthGenderResponse>> {
 
     return this.apiV1AuthGetAllGendersGet$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<ApSystemModelsAuthGenderService>>) => r.body as Array<ApSystemModelsAuthGenderService>)
+      map((r: StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>) => r.body as Array<ApSystemModelsAuthGenderResponse>)
     );
   }
 
@@ -666,7 +755,7 @@ export class AuthService extends BaseService {
   apiV1AuthEmailConfirmationPost$Plain$Response(params?: {
     emailActivationCode?: string;
 
-  }): Observable<StrictHttpResponse<string>> {
+  }): Observable<StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthEmailConfirmationPostPath, 'post');
     if (params) {
@@ -680,7 +769,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<string>;
+        return r as StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>;
       })
     );
   }
@@ -694,10 +783,10 @@ export class AuthService extends BaseService {
   apiV1AuthEmailConfirmationPost$Plain(params?: {
     emailActivationCode?: string;
 
-  }): Observable<string> {
+  }): Observable<ApSystemModelsAuthEmailConfirmationResponse> {
 
     return this.apiV1AuthEmailConfirmationPost$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<string>) => r.body as string)
+      map((r: StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>) => r.body as ApSystemModelsAuthEmailConfirmationResponse)
     );
   }
 
@@ -710,7 +799,7 @@ export class AuthService extends BaseService {
   apiV1AuthEmailConfirmationPost$Json$Response(params?: {
     emailActivationCode?: string;
 
-  }): Observable<StrictHttpResponse<string>> {
+  }): Observable<StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>> {
 
     const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthEmailConfirmationPostPath, 'post');
     if (params) {
@@ -724,7 +813,7 @@ export class AuthService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<string>;
+        return r as StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>;
       })
     );
   }
@@ -738,10 +827,105 @@ export class AuthService extends BaseService {
   apiV1AuthEmailConfirmationPost$Json(params?: {
     emailActivationCode?: string;
 
-  }): Observable<string> {
+  }): Observable<ApSystemModelsAuthEmailConfirmationResponse> {
 
     return this.apiV1AuthEmailConfirmationPost$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<string>) => r.body as string)
+      map((r: StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>) => r.body as ApSystemModelsAuthEmailConfirmationResponse)
+    );
+  }
+
+  /**
+   * Path part for operation apiV1AuthUpdateUserDetailsPost
+   */
+  static readonly ApiV1AuthUpdateUserDetailsPostPath = '/api/v1/Auth/UpdateUserDetails';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1AuthUpdateUserDetailsPost$Plain()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiV1AuthUpdateUserDetailsPost$Plain$Response(params?: {
+    id?: number;
+      body?: ApSystemModelsAuthUserDetailsRequest
+  }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUpdateUserDetailsPostPath, 'post');
+    if (params) {
+
+      rb.query('id', params.id, {});
+
+      rb.body(params.body, 'application/*+json');
+    }
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1AuthUpdateUserDetailsPost$Plain$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiV1AuthUpdateUserDetailsPost$Plain(params?: {
+    id?: number;
+      body?: ApSystemModelsAuthUserDetailsRequest
+  }): Observable<ApSystemModelsAuthUserDetailsResponse> {
+
+    return this.apiV1AuthUpdateUserDetailsPost$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>) => r.body as ApSystemModelsAuthUserDetailsResponse)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1AuthUpdateUserDetailsPost$Json()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiV1AuthUpdateUserDetailsPost$Json$Response(params?: {
+    id?: number;
+      body?: ApSystemModelsAuthUserDetailsRequest
+  }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUpdateUserDetailsPostPath, 'post');
+    if (params) {
+
+      rb.query('id', params.id, {});
+
+      rb.body(params.body, 'application/*+json');
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1AuthUpdateUserDetailsPost$Json$Response()` instead.
+   *
+   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   */
+  apiV1AuthUpdateUserDetailsPost$Json(params?: {
+    id?: number;
+      body?: ApSystemModelsAuthUserDetailsRequest
+  }): Observable<ApSystemModelsAuthUserDetailsResponse> {
+
+    return this.apiV1AuthUpdateUserDetailsPost$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>) => r.body as ApSystemModelsAuthUserDetailsResponse)
     );
   }
 

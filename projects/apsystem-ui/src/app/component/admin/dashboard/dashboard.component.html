@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div class="container">
+<div class="row">
+<div class="form-group search col-md-5">
+  <input type="text" class="form-control" value="" placeholder="Search">
+</div>
+</div>
+
+<div class="row">
+  <div id="doctorcard" *ngFor="let dn of DoctorsandNurses" class="col-sm-3">
+  <div class="card-group">
+  <div class="card">
+    <div class="img-wrapper">
+    <img id="propImage" *ngIf="dn.roleName == 'Doctor'" class="card-img-top" src="assets\Doctor.jpg">
+    <img id="propImage" *ngIf="dn.roleName == 'Nurse'" class="card-img-top" src="assets\Nurse_Default.png">
+    <ul class="list-inline text-center member-icons animate" >
+      <li class="list-inline-item">
+        <button class="btn btn-primary"><i class="fas fa-info-circle"></i></button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-primary" [routerLink]="['/bookingAppointment/'+ dn.userID]"><i class="fas fa-th-list"></i></button>
+      </li>
+    </ul>
+  </div>
+     <div class="card-body p-2 d-flex flex-column ">
+       <H6>Name: {{dn.name}}</H6>
+       <H6>Gender: {{dn.genderName}}</H6>
+       <H6>Speciality: {{dn.speciality}}</H6>
+       <H6>Experience: {{dn.experience}}</H6>
+     </div>
+     <div class="card-footer">
+     </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>

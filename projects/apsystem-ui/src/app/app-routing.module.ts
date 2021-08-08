@@ -1,3 +1,7 @@
+import { PatientProfileComponent } from './component/account/signup/patient-profile/patient-profile/patient-profile.component';
+import { MyProfileComponent } from './component/account/signup/myprofile/my-profile/my-profile.component';
+import { BookingsManagementComponent } from './component/bookings/bookings-management/bookings-management.component';
+import { SetAppointmentsComponent } from './component/appointments/set-appointments/set-appointments.component';
 import { EmailConfirmComponent } from './component/account/signup/email-Confirm/email-confirm/email-confirm.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -38,10 +42,27 @@ const routes: Routes = [
   pathMatch: 'full'
 },
 {
+  path: 'bookingAppointment/:userID',
+  component: BookingsManagementComponent,
+  data: {title: 'Bookings'},
+  pathMatch: 'full'
+},
+{
+  path: 'myprofile',
+  component: MyProfileComponent,
+  data: {title: 'MyProfile'},
+  pathMatch: 'full'
+},
+{
+  path: 'patientProfile',
+  component: PatientProfileComponent,
+  data: {title: 'PatientProfile'},
+  pathMatch: 'full'
+},
+{
   path: '',
   loadChildren: () => import('./component/component.module').then(m => m.ComponentModule)
 }
-
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { UserModel } from './../models/user-model';
 import { AppError } from './../models/common/base-response';
 import { EmailModel } from './../models/email-model';
 import { RoleModel } from './../models/role-model';
@@ -36,9 +37,7 @@ export class AccountService {
 
   }
 
-
-
-  register(newUser: RegisterUserRequest): Observable<RegisterUserRequest>{
+  register(newUser: RegisterUserRequest): Observable<RegisterUserResponse>{
     return this.http.post(this.baseUrl + '/api/v1/Auth/signup', newUser);
   }
 
@@ -50,13 +49,22 @@ export class AccountService {
     return this.http.get<RoleModel[]>(this.baseUrl + '/api/v1/Auth/GetAllRoles');
   }
 
-  emailConfirmation(emailModel: EmailModel): Observable<any>{
-     let param1 = new HttpParams().set('emailActivationCode', emailModel.emailActivationCode);
-     return this.http.get<any>(this.baseUrl + '/api/v1/Auth/EmailConfirmation', {params:param1} )
+  emailConfirmation(emailActivationCode: string): Observable<any>{
+
+     // tslint:disable-next-line: max-line-length
+     return this.http.post<any>(this.baseUrl + '/api/v1/Auth/EmailConfirmation',
+     {params:{emailActivationCode: emailActivationCode}})
     .pipe(
       catchError(this.handleError)
     );
   }
+
+  UserProfile(userID:number):Observable<UserModel>{
+   return this.http.get<UserModel>(this.baseUrl + '​/api​/v1​/Auth​/UserbyID',{params:{userID:userID}});
+
+  }
+
+
 
 
 }

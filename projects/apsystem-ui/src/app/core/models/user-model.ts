@@ -1,5 +1,8 @@
+import { AppError } from '../../../../../apsystem-api-client/src/lib/api/models/app-error';
 export class UserModel {
+
   address?: null | string;
+  appError?: AppError;
   dateOfBirth?: string;
   email?: null | string;
   emailActivationCode?: null | string;
@@ -16,6 +19,8 @@ export class UserModel {
   roleID?: number;
   roleName?: null | string;
   speciality?: null | string;
+  success?: boolean;
+  traceIdentifier?: null | string;
   userID?: null | number;
   userName?: null | string;
 }

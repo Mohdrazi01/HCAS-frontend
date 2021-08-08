@@ -194,7 +194,8 @@
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.min.scss",
-              "ApSystem.APP/projects/apsystem-ui/src/styles/strles.scss"
+              "ApSystem.APP/projects/apsystem-ui/src/styles/strles.scss",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
             ],
             "scripts": []
           }

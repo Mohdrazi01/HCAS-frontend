@@ -8,6 +8,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { AppointmentTypes as ApSystemModelsBookingsAppointmentTypes } from '../models/APSystem/Models.Bookings/appointment-types';
 import { BookingAppointment as ApSystemModelsBookingsBookingAppointment } from '../models/APSystem/Models.Bookings/booking-appointment';
 
 @Injectable({
@@ -198,25 +199,26 @@ export class BookingsService extends BaseService {
   }
 
   /**
-   * Path part for operation apiV1BookingGetBookingsbyUserIdPost
+   * Path part for operation apiV1BookingGetBookingsbyUserIdGet
    */
-  static readonly ApiV1BookingGetBookingsbyUserIdPostPath = '/api/v1/Booking/GetBookingsbyUserId';
+  static readonly ApiV1BookingGetBookingsbyUserIdGetPath = '/api/v1/Booking/GetBookingsbyUserId';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1BookingGetBookingsbyUserIdPost$Plain()` instead.
+   * To access only the response body, use `apiV1BookingGetBookingsbyUserIdGet$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyUserIdPost$Plain$Response(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyUserIdGet$Plain$Response(params?: {
+    bookingbyUserid?: number;
+
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdGetPath, 'get');
     if (params) {
 
+      rb.query('bookingbyUserid', params.bookingbyUserid, {});
 
-      rb.body(params.body, 'application/*+json');
     }
     return this.http.request(rb.build({
       responseType: 'text',
@@ -231,34 +233,36 @@ export class BookingsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyUserIdPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyUserIdGet$Plain$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyUserIdPost$Plain(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyUserIdGet$Plain(params?: {
+    bookingbyUserid?: number;
+
   }): Observable<Array<ApSystemModelsBookingsBookingAppointment>> {
 
-    return this.apiV1BookingGetBookingsbyUserIdPost$Plain$Response(params).pipe(
+    return this.apiV1BookingGetBookingsbyUserIdGet$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>) => r.body as Array<ApSystemModelsBookingsBookingAppointment>)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1BookingGetBookingsbyUserIdPost$Json()` instead.
+   * To access only the response body, use `apiV1BookingGetBookingsbyUserIdGet$Json()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyUserIdPost$Json$Response(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyUserIdGet$Json$Response(params?: {
+    bookingbyUserid?: number;
+
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdGetPath, 'get');
     if (params) {
 
+      rb.query('bookingbyUserid', params.bookingbyUserid, {});
 
-      rb.body(params.body, 'application/*+json');
     }
     return this.http.request(rb.build({
       responseType: 'json',
@@ -273,39 +277,41 @@ export class BookingsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyUserIdPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyUserIdGet$Json$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyUserIdPost$Json(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyUserIdGet$Json(params?: {
+    bookingbyUserid?: number;
+
   }): Observable<Array<ApSystemModelsBookingsBookingAppointment>> {
 
-    return this.apiV1BookingGetBookingsbyUserIdPost$Json$Response(params).pipe(
+    return this.apiV1BookingGetBookingsbyUserIdGet$Json$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>) => r.body as Array<ApSystemModelsBookingsBookingAppointment>)
     );
   }
 
   /**
-   * Path part for operation apiV1BookingGetBookingsbyDoctorIdPost
+   * Path part for operation apiV1BookingGetBookingsbyDoctorIdGet
    */
-  static readonly ApiV1BookingGetBookingsbyDoctorIdPostPath = '/api/v1/Booking/GetBookingsbyDoctorId';
+  static readonly ApiV1BookingGetBookingsbyDoctorIdGetPath = '/api/v1/Booking/GetBookingsbyDoctorId';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1BookingGetBookingsbyDoctorIdPost$Plain()` instead.
+   * To access only the response body, use `apiV1BookingGetBookingsbyDoctorIdGet$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyDoctorIdPost$Plain$Response(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyDoctorIdGet$Plain$Response(params?: {
+    id?: number;
+
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdGetPath, 'get');
     if (params) {
 
+      rb.query('id', params.id, {});
 
-      rb.body(params.body, 'application/*+json');
     }
     return this.http.request(rb.build({
       responseType: 'text',
@@ -320,34 +326,36 @@ export class BookingsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyDoctorIdPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyDoctorIdGet$Plain$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyDoctorIdPost$Plain(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyDoctorIdGet$Plain(params?: {
+    id?: number;
+
   }): Observable<Array<ApSystemModelsBookingsBookingAppointment>> {
 
-    return this.apiV1BookingGetBookingsbyDoctorIdPost$Plain$Response(params).pipe(
+    return this.apiV1BookingGetBookingsbyDoctorIdGet$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>) => r.body as Array<ApSystemModelsBookingsBookingAppointment>)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1BookingGetBookingsbyDoctorIdPost$Json()` instead.
+   * To access only the response body, use `apiV1BookingGetBookingsbyDoctorIdGet$Json()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyDoctorIdPost$Json$Response(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyDoctorIdGet$Json$Response(params?: {
+    id?: number;
+
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdGetPath, 'get');
     if (params) {
 
+      rb.query('id', params.id, {});
 
-      rb.body(params.body, 'application/*+json');
     }
     return this.http.request(rb.build({
       responseType: 'json',
@@ -362,39 +370,41 @@ export class BookingsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyDoctorIdPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyDoctorIdGet$Json$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyDoctorIdPost$Json(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyDoctorIdGet$Json(params?: {
+    id?: number;
+
   }): Observable<Array<ApSystemModelsBookingsBookingAppointment>> {
 
-    return this.apiV1BookingGetBookingsbyDoctorIdPost$Json$Response(params).pipe(
+    return this.apiV1BookingGetBookingsbyDoctorIdGet$Json$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>) => r.body as Array<ApSystemModelsBookingsBookingAppointment>)
     );
   }
 
   /**
-   * Path part for operation apiV1BookingGetBookingsbyIdPost
+   * Path part for operation apiV1BookingGetBookingsbyIdGet
    */
-  static readonly ApiV1BookingGetBookingsbyIdPostPath = '/api/v1/Booking/GetBookingsbyId';
+  static readonly ApiV1BookingGetBookingsbyIdGetPath = '/api/v1/Booking/GetBookingsbyId';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1BookingGetBookingsbyIdPost$Plain()` instead.
+   * To access only the response body, use `apiV1BookingGetBookingsbyIdGet$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyIdPost$Plain$Response(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyIdGet$Plain$Response(params?: {
+    id?: number;
+
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyIdGetPath, 'get');
     if (params) {
 
+      rb.query('id', params.id, {});
 
-      rb.body(params.body, 'application/*+json');
     }
     return this.http.request(rb.build({
       responseType: 'text',
@@ -409,34 +419,36 @@ export class BookingsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyIdPost$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyIdGet$Plain$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyIdPost$Plain(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyIdGet$Plain(params?: {
+    id?: number;
+
   }): Observable<ApSystemModelsBookingsBookingAppointment> {
 
-    return this.apiV1BookingGetBookingsbyIdPost$Plain$Response(params).pipe(
+    return this.apiV1BookingGetBookingsbyIdGet$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>) => r.body as ApSystemModelsBookingsBookingAppointment)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiV1BookingGetBookingsbyIdPost$Json()` instead.
+   * To access only the response body, use `apiV1BookingGetBookingsbyIdGet$Json()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyIdPost$Json$Response(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyIdGet$Json$Response(params?: {
+    id?: number;
+
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyIdPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyIdGetPath, 'get');
     if (params) {
 
+      rb.query('id', params.id, {});
 
-      rb.body(params.body, 'application/*+json');
     }
     return this.http.request(rb.build({
       responseType: 'json',
@@ -451,15 +463,16 @@ export class BookingsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyIdPost$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiV1BookingGetBookingsbyIdGet$Json$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiV1BookingGetBookingsbyIdPost$Json(params?: {
-      body?: ApSystemModelsBookingsBookingAppointment
+  apiV1BookingGetBookingsbyIdGet$Json(params?: {
+    id?: number;
+
   }): Observable<ApSystemModelsBookingsBookingAppointment> {
 
-    return this.apiV1BookingGetBookingsbyIdPost$Json$Response(params).pipe(
+    return this.apiV1BookingGetBookingsbyIdGet$Json$Response(params).pipe(
       map((r: StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>) => r.body as ApSystemModelsBookingsBookingAppointment)
     );
   }
@@ -603,6 +616,93 @@ export class BookingsService extends BaseService {
 
     return this.apiV1BookingDeleteBookingDelete$Response(params).pipe(
       map((r: StrictHttpResponse<void>) => r.body as void)
+    );
+  }
+
+  /**
+   * Path part for operation apiV1BookingGetAppointmentTypesGet
+   */
+  static readonly ApiV1BookingGetAppointmentTypesGetPath = '/api/v1/Booking/GetAppointmentTypes';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1BookingGetAppointmentTypesGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentTypesGet$Plain$Response(params?: {
+
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentTypesGetPath, 'get');
+    if (params) {
+
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1BookingGetAppointmentTypesGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentTypesGet$Plain(params?: {
+
+  }): Observable<Array<ApSystemModelsBookingsAppointmentTypes>> {
+
+    return this.apiV1BookingGetAppointmentTypesGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>) => r.body as Array<ApSystemModelsBookingsAppointmentTypes>)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1BookingGetAppointmentTypesGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentTypesGet$Json$Response(params?: {
+
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentTypesGetPath, 'get');
+    if (params) {
+
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1BookingGetAppointmentTypesGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentTypesGet$Json(params?: {
+
+  }): Observable<Array<ApSystemModelsBookingsAppointmentTypes>> {
+
+    return this.apiV1BookingGetAppointmentTypesGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>) => r.body as Array<ApSystemModelsBookingsAppointmentTypes>)
     );
   }
 

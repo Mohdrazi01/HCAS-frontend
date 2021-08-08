@@ -1,6 +1,4 @@
-import { AppError } from './../../../core/models/common/base-response';
-import { HttpResponse } from '@angular/common/http';
-import { HttpRequestResposnseInterceptor } from './../../../core/interceptors/http-request-resposnse-interceptor.inteceptor';
+import { AuthService } from '@api';
 import { AuthResponse } from './../../../../../../apsystem-api-client/src/lib/api/models/APSystem/Models.Auth/auth-response';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +22,7 @@ export class LoginComponent implements OnInit {
 
 
    constructor(private router: Router,private token: TokenStorageService,private accountService: AccountService,
-               private formBuilder: FormBuilder) { }
+               private formBuilder: FormBuilder, private authService:AuthService) { }
 
    ngOnInit(): void {this.forms = this.formBuilder.group({
     email: ['', Validators.required],
@@ -46,16 +44,18 @@ export class LoginComponent implements OnInit {
              alertify.success('Welcome, you are logged in');
              this.token.setToken(user.access_Token);
              this.token.setRole(user.roleId);
-             this.router.navigate(['/admin/dashboard']);
+             this.token.setUserID(user.userId);
+             this.token.setUserName(user.fullName);
+             this.token.setUserEmail(user.userName);
+             this.router.navigate(['/dashboard']);
            }
-           if(user.success === false){
-            this.router.navigate(['/']);
+           if (user.success === false){
+            this.router.navigate(['/login']);
            }
          }
          , error => {
            loginForm.reset('');
            alertify.error('Error Occured: ' + error.error.appError.message);
-       }
-        );
+       });
    }
 }

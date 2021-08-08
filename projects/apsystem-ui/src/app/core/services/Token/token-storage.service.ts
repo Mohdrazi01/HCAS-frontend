@@ -2,7 +2,9 @@ import { Roles } from './../../models/enums/roles.enum';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
+const USER_ID = 'user-id';
+const USER_NAME = 'user-name';
+const USER_EMAIL = 'user-email';
 const RoleName = 'role';
 
 @Injectable({
@@ -15,7 +17,7 @@ export class TokenStorageService {
   signout()
   {
     window.localStorage.clear();
-    this.router.navigate(['/signup']);
+    this.router.navigate(['/home']);
   }
   public setToken(token:string)
   {
@@ -25,23 +27,24 @@ export class TokenStorageService {
 
      // tslint:disable-next-line: typedef
     public setRole(roleid: number){
-    switch (roleid){
-        case 1:
-        window.localStorage.setItem(RoleName,roleid.toString());
-        break;
-        case 2:
-        window.localStorage.removeItem(RoleName);
-        window.localStorage.setItem(RoleName,roleid.toString());
-        break;
-        case 3:
-        window.localStorage.setItem(RoleName,roleid.toString());
-        break;
-        case 4:
-        window.localStorage.setItem(RoleName,roleid.toString());
-        break;
-      }
-
-
+      switch (roleid){
+          case 1:
+          window.localStorage.removeItem(RoleName);
+          window.localStorage.setItem(RoleName, roleid.toString());
+          break;
+          case 2:
+          window.localStorage.removeItem(RoleName);
+          window.localStorage.setItem(RoleName, roleid.toString());
+          break;
+          case 3:
+          window.localStorage.removeItem(RoleName);
+          window.localStorage.setItem(RoleName, roleid.toString());
+          break;
+          case 4:
+          window.localStorage.removeItem(RoleName);
+          window.localStorage.setItem(RoleName, roleid.toString());
+          break;
+        }
     }
 
   public getRole(): string{
@@ -52,16 +55,54 @@ export class TokenStorageService {
     return localStorage.getItem(TOKEN_KEY);
   }
 
+  public setUserID(userid: number){
+    window.localStorage.removeItem(USER_ID);
+    window.localStorage.setItem(USER_ID,userid.toString());
+  }
+  public setUserEmail(userEmail: string){
+    window.localStorage.removeItem(USER_EMAIL);
+    window.localStorage.setItem(USER_EMAIL, userEmail);
+  }
+
+  public setUserName(name: string){
+    window.localStorage.removeItem(USER_NAME);
+    window.localStorage.setItem(USER_NAME, name);
+  }
+
+  public getUserID():string{
+    return localStorage.getItem(USER_ID);
+  }
+
+  public getUserEmail():string{
+    return localStorage.getItem(USER_EMAIL);
+  }
+
+  public getUserName():string{
+    return localStorage.getItem(USER_NAME);
+  }
+
   get isLogin(): boolean
   {
-    if(this.getToken()!=null) return true;
-    else return false;
+    if(this.getToken() != null) { return true; }
+    else { return false; }
   }
 
   get isDoctorLogin(): boolean
   {
-    if(this.getToken()!=null && this.getRole()==="2") return true;
-    else return false;
+    if(this.getToken()!= null && this.getRole() === '2' || this.getToken()!= null && this.getRole() === '4') { return true; }
+    else { return false; }
+  }
+
+  get isAdmin(): boolean
+  {
+    if(this.getToken()!= null && this.getRole() === '3'){ return true; }
+    else { return false; }
+  }
+
+  get isPatientLogin(): boolean
+  {
+    if (this.getToken() != null && this.getRole() === '1') { return true; }
+    else { return false; }
   }
 
 }

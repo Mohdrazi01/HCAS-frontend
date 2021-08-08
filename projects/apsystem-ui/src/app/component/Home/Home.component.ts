@@ -1,5 +1,8 @@
+import { AppointmentUiService } from './../../core/services/appointmentUi.service';
+import { AppointmentService } from './../../../../../apsystem-api-client/src/lib/api/services/appointment.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Appointment } from '@core/models/appointment';
 
 @Component({
   selector: 'app-Home',
@@ -7,11 +10,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./Home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public allAppointments: Array<Appointment> = [];
+  public tenearliest : Array<Appointment> = [];
 
-
-  constructor(private router: Router) { }
+  constructor(private router: Router,private appointmentservice: AppointmentService,
+    private appointmentUiService: AppointmentUiService) { }
 
   ngOnInit() {
+    this.appointmentUiService.GetAppointmentList().subscribe(
+      response=>{
+        console.warn(response);
+        for(var i =0;i<response.length;i++){
+          this.allAppointments.push(response[i]);
+        }
+      }
+    )
+
+       this.tenearliest = this.allAppointments.filter(m=>m>Date.now);
+
   }
   login()
   {
@@ -24,4 +40,7 @@ export class HomeComponent implements OnInit {
   {
     this.router.navigate(['./signup']);
   }
+
+
+
 }

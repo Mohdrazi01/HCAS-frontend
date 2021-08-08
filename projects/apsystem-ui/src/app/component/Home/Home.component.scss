@@ -1,3 +1,119 @@
-#row{
-  
+
+
+#card1{
+
+   height:300px;
+   border-radius: 5px;
+   background: white;
+   box-shadow:5px 5px 15px rgb(155, 155, 236);
+   text-align: center;
+   position: relative;
+   width: max-content;
+   overflow-x: auto;
+   background-color: rgba(56, 49, 49, 0.082);
+
 }
+#card1 table{
+  width: 100%;
+  height: 100%;
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+}
+#propImage{
+  height: 350px;
+  width: 780px;
+  overflow: hidden;
+  position: relative;
+  border-right: 18px;
+}
+
+.card-header{
+  position: relative;
+  left: 150px;
+  top:30px;
+  height:375px;
+  width: 800px;
+  border: skyblue;
+}
+#card1 scroll{
+  background-color: darkgray;
+}
+.table tbody{
+  border-radius: 18px;
+  viewport-fit: 100%;
+}
+
+#row{
+  text-align: center;
+}
+
+.empty{
+  height: 600px;
+  width: 700px;
+  background-color: antiquewhite;
+}
+
+.card:hover{
+  transform: scale(1.5,1.5);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+
+.card{
+  transform: scale(1,1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+
+#card2{
+  height:300px;
+  border-radius: 5px;
+  background: white;
+  box-shadow:5px 5px 15px rgb(155, 155, 236);
+  text-align: center;
+  position: relative;
+  width: 200px;
+  overflow-x: auto;
+  background-color: rgba(56, 49, 49, 0.082);
+}
+
+#card3{
+  height:300px;
+  border-radius: 5px;
+  background: white;
+  box-shadow:5px 5px 15px rgb(155, 155, 236);
+  text-align: center;
+  position: relative;
+  width: 200px;
+  overflow-x: auto;
+  background-color: rgba(56, 49, 49, 0.082);
+}
+
+.card-image{
+  grid-area: image;
+}
+
+.card-text{
+  grid-area:text;
+}
+
+.card-stats{
+  grid-area: stats;
+}
+
+.card-position{
+  position: relative;
+  top:150px;
+  left:100px;
+}
+.card-position2{
+  position: relative;
+  left:440px;
+  bottom:150px;
+}
+.card-position3{
+  position: relative;
+  left:800px;
+  bottom: 450px;
+}
+

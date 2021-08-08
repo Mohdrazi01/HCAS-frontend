@@ -3,3 +3,15 @@
   top:35px;
 
 }
+.card-body{
+  box-shadow:5px 5px 15px rgb(155, 155, 236);
+}
+.image
+{
+  background-image: url('https://images.unsplash.com/photo-1585543923016-c6ac4a980ff0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=604&q=80');
+
+}
+
+.ng-invalid.ng-touched{
+ border-color: red;
+}

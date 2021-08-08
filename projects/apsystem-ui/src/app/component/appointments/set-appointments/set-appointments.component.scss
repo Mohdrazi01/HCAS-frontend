@@ -1,0 +1,116 @@
+
+.first
+{
+  display: inline-block;
+}
+.second
+{
+  display: inline-block;
+}
+.third{
+  display: inline-block;
+}
+.fourth{
+  display: inline-block;
+}
+
+#btns button{
+  position: relative;
+  margin-right: 6px;
+  height:40px;
+  text-align: center;
+  width: 120px;
+  left : 400px;
+}
+.badge{
+  background-color: rgb(225, 0, 255);
+}
+
+#claender{
+  position: relative;
+  top:20px;
+
+}
+.card-header h4 :hover{
+  background-color: #33B5E5;
+}
+
+
+ .header{
+   position: absolute;
+   left: 20px;
+   font-family:Arial, Helvetica, sans-serif;
+   overflow:auto;
+ }
+
+ hr {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#headerlable{
+  position: relative;
+  bottom:10px;
+  left: 40px;
+  border: #33B5E5;
+  text-decoration: solid;
+  text-justify: distribute;
+}
+#headerlable :hover{
+color: rgb(242, 255, 127);
+
+}
+
+.slotslist{
+  position: relative;
+  top:30px;
+
+}
+.list{
+list-style:none;
+}
+// #buttons li {
+//   float: left;
+//   list-style: none;
+//   text-align: center;
+//   background-color: rgb(67, 170, 170);
+//   margin-right: 30px;
+//   margin-top:10px;
+//   width: 150px;
+//   line-height: 60px;
+// }
+// #buttons li a {
+//   text-decoration: none;
+//   color: #FFFFFF;
+//   display: block;
+// }
+// #buttons li a:hover {
+//   text-decoration: none;
+//   color: #000000;
+//   background-color: #33B5E5;
+// }
+#slotlist{
+  position : relative;
+  top:10px;
+}
+#loading{
+  position: relative;
+  height: 30px;
+  width: 30px;
+  align-items: quote($string: "Loading");
+  margin-left: 20px;
+
+}
+
+.badge{
+  height: 35px;
+  width: 160px;
+  position: relative;
+  right:50px;
+
+}
+.ng-invalid.ng-touched{
+  border-color: red;
+ }
+

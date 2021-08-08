@@ -1,3 +1,47 @@
-<p>
-  set-appointments works!
-</p>
+
+              <div class="card-header">
+                <h4><i class="fas fa-calendar-plus"></i> Select your availability :)</h4>
+              </div>
+
+
+                <form [formGroup]="appointmentform">
+                         <div id="claender" class="form-group col-md-5" >
+                           <p>Please select date.</p>
+                          <input type="date" required class="form-control" formControlName="appointmentDate">
+                        </div>
+                        <div class="slotslist">
+                        <div class="form-group col-3 first">
+                          <span id="headerlable" for="firstList align" class="badge badge-secondary shadow"><h5>First Quarter</h5></span>
+                          <ul name="firstList" id="buttons" *ngFor="let slot of listofOneFourhtList">
+                            <button class="btn btn-info" type="checkbox" id={{slot.appointmentSlotID}} (click)="onSelectSlot($event)"  value={{slot.appointmentSlotID}}>{{slot.appointmentStartTime}}-{{slot.appointmentEndTime}}</button>
+                          </ul>
+                       </div>
+                        <div class="form-group col-3 second">
+                          <span id="headerlable" for="SecondList" class="badge badge-secondary shadow" ><h5>Second Quarter</h5></span>
+                          <ul  name="SecondList" id="buttons" *ngFor="let slot of listofTwoFourhtList">
+                            <button class="btn btn-info" type="checkbox" autocomplete="off" id={{slot.appointmentSlotID}} (click)="onSelectSlot($event)"  value={{slot.appointmentSlotID}}>{{slot.appointmentStartTime}}-{{slot.appointmentEndTime}}</button>
+                          </ul>
+                        </div>
+                        <div class="form-group col-3 third">
+                          <span id="headerlable" for="ThirdList" class="badge badge-secondary shadow"><h5>Third Quarter</h5></span>
+                          <ul  name="ThirdList" id="buttons" *ngFor="let slot of listofThreeFourhtList" >
+                            <button class="btn btn-info" type="checkbox" id={{slot.appointmentSlotID}} (click)="onSelectSlot($event)"  value={{slot.appointmentSlotID}}>{{slot.appointmentStartTime}}-{{slot.appointmentEndTime}}</button>
+                          </ul>
+                        </div>
+                        <div class="form-group col-3 fourth">
+                          <span id="headerlable" for="fourthList" class="badge badge-secondary shadow"><h5>Fourth Quarter</h5></span>
+                          <ul  name="fourthList" id="buttons" *ngFor="let slot of listofRemeaning" >
+                           <button class="btn btn-info"  id={{slot.appointmentSlotID}} (click)="onSelectSlot($event)"  value={{slot.appointmentSlotID}}>{{slot.appointmentStartTime}}-{{slot.appointmentEndTime}}</button>
+                          </ul>
+                        </div>
+                        <div id="btns" class="form-group col-md-12">
+                          <button  type="submit"  (click)="onSubmit()" class="btn btn-primary"><i class="far fa-calendar-check"></i> Create</button>
+                          <button type="button" (click)="onReset()" class="btn btn-secondary ml-2"><i class="fas fa-eraser"></i> Cancel</button>
+                          <div id="loading" *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only">Loading...</span>
+                         </div>
+                        </div>
+                      </div>
+                   </form>
+
+

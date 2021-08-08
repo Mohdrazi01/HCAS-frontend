@@ -14,24 +14,13 @@ import * as alertify from 'alertifyjs';
 })
 export class SignupComponent implements OnInit {
 
-  userform = this.formBuilder.group({
-    name: ['', Validators.required],
-    email: ['', Validators.required ],
-    password: ['', Validators.required ],
-    phonenumber: ['', Validators.required],
-    dateofbirth: ['', Validators.required],
-    gender: ['', Validators.required],
-    roleid: ['', Validators.required],
-    gmcnumber: [''],
-    speciality: [''],
-    experience: [''],
-    address : [''],
-  });
+  userform:FormGroup;
 
 
   public listGender: Array<GenderModel> = [];
   public listRoles: Array<RoleModel> = [];
   isDoctor: boolean = false;
+  loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder
     ,private route: ActivatedRoute
@@ -40,12 +29,39 @@ export class SignupComponent implements OnInit {
     { }
 
   ngOnInit(): void {
-                    this.accountService.gender().subscribe(
+
+    this.userform = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required ],
+      password: ['', Validators.required ],
+      phonenumber: ['', Validators.required],
+      dateofbirth: ['', Validators.required],
+      gender: ['', Validators.required],
+      roleid: ['', Validators.required],
+      gmcnumber: [''],
+      speciality: [''],
+      experience: [''],
+      address : [''],
+      checkbox: ['', Validators.required]
+    });
+    this.userform.get('roleid').valueChanges
+    .subscribe(roleId => {
+     const gmcNumber = this.userform.get('gmcnumber');
+     if(roleId == 2 || roleId == 4){
+      gmcNumber.setValidators(Validators.required);
+     }else{
+      gmcNumber.clearValidators();
+     }
+     gmcNumber.updateValueAndValidity();
+    });
+
+
+    this.accountService.gender().subscribe(
       data => {
          this.listGender = data;
       });
 
-                    this.accountService.roles().subscribe(
+    this  .accountService.roles().subscribe(
         data => {
            this.listRoles = data;
         });
@@ -56,15 +72,15 @@ export class SignupComponent implements OnInit {
   //get getForm() { return this.form.controls; }
 
   onSelect(e){
-
       console.warn(e.target.value);
-
-
+  }
+  onClick(){
+    return this.loading = true;
   }
 
   onSelectRole(e){
     // tslint:disable-next-line: no-unused-expression
-      if(e.target.value == 2){
+      if(e.target.value == 2 || e.target.value == 4){
         return this.isDoctor = true;
 
       }
@@ -93,7 +109,6 @@ export class SignupComponent implements OnInit {
   regModel.experience = this.userform.value.experience;
   regModel.address = this.userform.value.address;
 
-
   if (this.userform.valid)
   {
     this.accountService.register(regModel).subscribe(
@@ -101,19 +116,19 @@ export class SignupComponent implements OnInit {
          alertify.success(response);
          alertify.success('Registration Successful. Please verify your email address.. Before login.');
          this.userform.reset();
-
+         return this.loading = false;
       }
     // tslint:disable-next-line: no-unused-expression
-    ), (error: any)=>{
+    ), (error: any) => {
       alertify.error(error);
       this.userform.reset();
+      return this.loading = false;
     };
-
-
   }
   else
   {
     alertify.error("Form is incomplete");
+    return this.loading = false;
   }
 }
 }

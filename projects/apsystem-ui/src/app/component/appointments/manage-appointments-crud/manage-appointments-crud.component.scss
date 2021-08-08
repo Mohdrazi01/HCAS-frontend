@@ -1,0 +1,32 @@
+.table-dark{
+  background-color: rgba(157, 107, 163, 0.445);
+
+}
+.table-dark thead{
+  background-color: rgb(92, 39, 99);
+}
+
+.container{
+  position: relative;
+  max-height: 600px;
+
+}
+
+table
+{
+  height: 200px;
+  position: relative;
+  top:70px;
+  max-height: fit-content;
+  overflow-x: auto;
+
+}
+
+.search{
+  position: relative;
+  left:140px;
+  top:30px;
+}
+.danger{
+  background-color: red;
+}
