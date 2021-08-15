@@ -1,0 +1,87 @@
+.table
+{
+position: relative;
+top:70px;
+}
+.search{
+position: relative;
+top:30px;
+left:150px;
+}
+
+.table-dark{
+
+  background-color: rgba(157, 107, 163, 0.445);
+
+}
+.table-dark thead{
+  background-color: rgb(92, 39, 99);
+}
+
+.container{
+  position: relative;
+  width:fit-content;
+}
+.container h3,tr,td,th {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+}
+#statusid{
+  min-width: 60px;
+}
+
+.table
+{
+  position: relative;
+  top:70px;
+  max-height: fit-content;
+  width: 1000px;
+  left:50px;
+  overflow-x:auto;
+  border-collapse:collapse;
+  font-size: 0.9em;
+  min-width: 400px;
+  font-weight: bold;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(115, 73, 192, 0.507);
+}
+
+.table thead{
+  border-radius: 18px;
+}
+
+
+.title{
+position: relative;
+width:1100px;
+top:10px;
+border:3px #ccc Solid;
+padding: 10px;
+}
+
+.title h3{
+position: relative;
+left:300px;
+}
+
+.table tr{
+  height: 10px;
+}
+.row{
+  height: 20px;
+}
+
+
+.search{
+  position: relative;
+  left:140px;
+  top:30px;
+
+}
+.danger{
+  background-color: red;
+}
+
+
+

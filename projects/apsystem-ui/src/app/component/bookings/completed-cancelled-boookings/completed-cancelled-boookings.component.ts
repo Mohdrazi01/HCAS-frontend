@@ -11,17 +11,15 @@ import { TokenStorageService } from '@core/services/Token/token-storage.service'
 import * as alertify from 'alertifyjs';
 
 @Component({
-  selector: 'app-confirmed-bookings',
-  templateUrl: './confirmed-bookings.component.html',
-  styleUrls: ['./confirmed-bookings.component.scss']
+  selector: 'app-completed-cancelled-boookings',
+  templateUrl: './completed-cancelled-boookings.component.html',
+  styleUrls: ['./completed-cancelled-boookings.component.scss']
 })
-export class ConfirmedBookingsComponent implements OnInit {
+export class CompletedCancelledBoookingsComponent implements OnInit {
 
   doctorID: number;
   listofbookings: Array<BookingModel> =[];
-  listofUpComingBookings: Array<BookingModel> =[];
-
-
+  CompletedorCancelled: Array<BookingModel> =[];
 
   listofAppointmentStatus : Array<AppointmentStatus> = [];
   constructor(private route: Router
@@ -34,7 +32,6 @@ export class ConfirmedBookingsComponent implements OnInit {
   ngOnInit() {
     this.doctorID = Number(this.token.getUserID());
     this.GetBookings(this.doctorID);
-    this.getStatus();
     //this.GetupComingBookings(this.listofbookings);
   }
 
@@ -46,37 +43,14 @@ export class ConfirmedBookingsComponent implements OnInit {
         for(var i=0;i<response.body.length;i++){
           this.listofbookings.push(response.body[i]);
         }
-         this.listofUpComingBookings = this.listofbookings.filter(m=>m.apStatus == 'Up-Comming');
+        this.CompletedorCancelled = this.listofbookings.filter(m=>m.apStatus.toLowerCase().startsWith("completed")||
+        m.apStatus.toLowerCase().startsWith("cancel"));
       });
 
   }
 
-  updateAp(e,appointments){
-    console.warn(e.target.value);
-    let updateBooking = new BookingModel();
-    updateBooking.bookingID = appointments.bookingID;
-    updateBooking.appointmentID = appointments.appointmentID;
-    updateBooking.phoneNumber = appointments.phoneNumber;
-    updateBooking.problemDiscription = appointments.problemDiscription;
-    updateBooking.statusID = e.target.value;
 
-    this.bookingservice.apiV1BookingUpdateBookingPut$Json$Response({id: updateBooking.bookingID, body: updateBooking}).subscribe(
-      response=>{
-        var index = this.listofUpComingBookings.findIndex(x=>x.bookingID == updateBooking.bookingID);
-        this.listofUpComingBookings.splice(index,1);
-         console.warn(response);
-         alertify.success('Update successfull');
 
-      });
-  }
 
-  getStatus(){
-   this.bookingservice.apiV1BookingGetAppointmentStatusGet$Json$Response().subscribe(
-    response=>{
-      for(var i = 0; i< response.body.length;i++){
-        this.listofAppointmentStatus.push(response.body[i]);
-      }
-    });
-  }
 
 }

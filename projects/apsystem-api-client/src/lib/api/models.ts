@@ -1,4 +1,5 @@
 export { AppError } from './models/app-error';
+export { MessageDto as ApSystemCoreControllersChatReqDtoMessageDto } from './models/APSystem/Core.Controllers.Chat.ReqDto/message-dto';
 export { Appointments as ApSystemModelsAppointmentAppointments } from './models/APSystem/Models.Appointment/appointments';
 export { AppointmentSlots as ApSystemModelsAppointmentAppointmentSlots } from './models/APSystem/Models.Appointment/appointment-slots';
 export { AppointmentwithSlotsjoin as ApSystemModelsAppointmentAppointmentwithSlotsjoin } from './models/APSystem/Models.Appointment/appointmentwith-slotsjoin';
@@ -11,5 +12,6 @@ export { RegisterUserResponse as ApSystemModelsAuthRegisterUserResponse } from '
 export { RoleResponse as ApSystemModelsAuthRoleResponse } from './models/APSystem/Models.Auth/role-response';
 export { UserDetailsRequest as ApSystemModelsAuthUserDetailsRequest } from './models/APSystem/Models.Auth/user-details-request';
 export { UserDetailsResponse as ApSystemModelsAuthUserDetailsResponse } from './models/APSystem/Models.Auth/user-details-response';
+export { AppointmentStatusRequest as ApSystemModelsBookingsAppointmentStatusRequest } from './models/APSystem/Models.Bookings/appointment-status-request';
 export { AppointmentTypes as ApSystemModelsBookingsAppointmentTypes } from './models/APSystem/Models.Bookings/appointment-types';
 export { BookingAppointment as ApSystemModelsBookingsBookingAppointment } from './models/APSystem/Models.Bookings/booking-appointment';

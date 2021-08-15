@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserModel } from '@core/models/user-model';
 import { Appointment } from '@core/models/appointment';
 import * as alertify from 'alertifyjs';
+import { runInThisContext } from 'vm';
 @Component({
   selector: 'app-bookings-management',
   templateUrl: './bookings-management.component.html',
@@ -20,12 +21,25 @@ export class BookingsManagementComponent implements OnInit {
    public doctorandNurseID: number;
    public user: UserModel = new UserModel();
    public appointmentbyDocID: AppointmentModel = new AppointmentModel();
-   listofAppointments: Array<Appointment> = [];
+   public listofAppointments: Array<Appointment> = [];
    selectedAppointment: Appointment = new Appointment();
    patientId: number;
    patientEmail: string;
    listofAppointmentTypes: Array<AppointmentType> = [];
-   loading: boolean = true;
+   loading: boolean = false;
+   private _searchTerm:string;
+   filteredAppointemnts: Array<Appointment>= [];
+   get searchTerm():string{
+     return this._searchTerm;
+   }
+   set searchTerm(value:string){
+    this._searchTerm = value;
+    this.filteredAppointemnts = this.FilterAppointment(value);
+  }
+
+  FilterAppointment(value:string){
+    return this.listofAppointments.filter(f=>f.appointmentDate.toString().slice(8,10).indexOf(value)!==-1);
+  }
 
   constructor(private activeRoute: ActivatedRoute,private route: Router
     ,         private authservice: AuthService
@@ -46,6 +60,7 @@ export class BookingsManagementComponent implements OnInit {
     this.appointmentbyDocID.doctorID = this.doctorandNurseID;
     this.getDoctorNurseDetails(this.doctorandNurseID);
     this.getAppointments(this.appointmentbyDocID);
+    this.filteredAppointemnts = this.listofAppointments;
     this.patientId = Number(this.token.getUserID());
     this.patientEmail = this.token.getUserEmail();
     this.getAppointmentType();
@@ -126,7 +141,6 @@ export class BookingsManagementComponent implements OnInit {
          //console.warn(response.body);
          this.bookingForm.reset();
          window.location.reload();
-         alertify.success(response.body.apStatus);
          alertify.success('booking created successfully');
          return this.loading = false;
        }

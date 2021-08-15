@@ -5,7 +5,7 @@
   </div>
 <div class="search">
   <div class="form-group search col-md-5">
-    <input type="text" class="form-control" value="" placeholder="Search">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search">
   </div>
   </div>
 
@@ -63,12 +63,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr data-toggle="modal" data-target="#exampleModalCenter" *ngFor="let appointmemts of listofAppointments">
+                    <tr data-toggle="modal" data-target="#exampleModalCenter" *ngFor="let appointmemts of filteredAppointemnts">
                       <td  (click)="callbookingsform(appointmemts)" scope="row">{{appointmemts.appointmentDate| date:'dd/MM/yyyy'}}</td>
                       <td (click)="callbookingsform(appointmemts)" scope="row">{{appointmemts.appointmentStartTime}}</td>
                       <td (click)="callbookingsform(appointmemts)" scope="row">{{appointmemts.appointmentEndTime}}</td>
                     </tr>
-
                   </tbody>
                 </table>
               </div>

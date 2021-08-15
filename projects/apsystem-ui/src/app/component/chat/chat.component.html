@@ -1,0 +1,18 @@
+
+<div class="ud-header">
+  <h2><i class="fas fa-comment-dots"></i> Chat.</h2>
+</div>
+<div class="ud-body">
+  <div class="msg-box">
+    <ul>
+      <li *ngFor="let mObj of msgInboxArray" [ngClass]="mObj.user === msgDto.user ? 'in-msg' : 'ex-msg'">{{mObj.user}} :<br /><span class="msg-italic-style">{{mObj.messageText}}</span><br />
+        <!-- <span *ngIf="msgInboxArray.ImageHeaders.length >0" class="msg-italic-style"><img width="150" style="margin-right: 5px" [src]="mObj.ImageHeaders + mObj.ImageBinary" ></span></li> -->
+    </ul>
+  </div>
+  <div class="ud-flex-row">
+    <input type="text" placeholder="Type message here" class="msg-input" [(ngModel)]="msgDto.messageText"  />
+    <button class="send-btn" type="reset" (click)= "send()"><i class="fas fa-comment-medical"></i></button>
+  </div>
+    <!-- <input type="file" placeholder="" class="img-box" [(ngModel)]="msgDto.ImageHeaders" /> -->
+</div>
+<button (click)="goBack()" id="button" class="btn btn-primary">Back</button>

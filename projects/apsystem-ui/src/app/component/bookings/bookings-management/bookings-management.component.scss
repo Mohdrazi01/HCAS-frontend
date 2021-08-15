@@ -12,6 +12,11 @@ left: 200px;
 display: flex;
 }
 
+.container h3,h5,h6,th,td{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+}
+
 .row1{
 height:440px;
 border-radius: 18px;
@@ -77,4 +82,11 @@ button{
 }
 .table-light{
   background-color: rgba(226, 171, 226, 0.514);
+}
+
+.spinner-border{
+  position: relative;
+  bottom: 280px;
+  height: 20px;
+  width: 20px;
 }

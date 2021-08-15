@@ -1,3 +1,6 @@
+import { AllUserAppointmentsComponent } from './userdashboard/users-mamagement-dashboard/all-user-appointments/all-user-appointments.component';
+import { ChatComponent } from './chat/chat.component';
+import { CompletedCancelledBoookingsComponent } from './bookings/completed-cancelled-boookings/completed-cancelled-boookings.component';
 import { ConfirmedBookingsComponent } from './bookings/confirmed-bookings/confirmed-bookings.component';
 import { ManageAppointmentsCrudComponent } from './appointments/manage-appointments-crud/manage-appointments-crud.component';
 import { PatientProfileComponent } from './account/signup/patient-profile/patient-profile/patient-profile.component';
@@ -22,7 +25,10 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     BookingsManagementComponent,
+    ChatComponent,
+    AllUserAppointmentsComponent,
     ConfirmedBookingsComponent,
+    CompletedCancelledBoookingsComponent,
     UsersMamagementDashboardComponent,
     ManageAppointmentsCrudComponent,
     LoginComponent,

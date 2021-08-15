@@ -6,6 +6,7 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 import { AppointmentService } from './services/appointment.service';
 import { AuthService } from './services/auth.service';
 import { BookingsService } from './services/bookings.service';
+import { ChatService } from './services/chat.service';
 
 /**
  * Module that provides all services and configuration.
@@ -18,6 +19,7 @@ import { BookingsService } from './services/bookings.service';
     AppointmentService,
     AuthService,
     BookingsService,
+    ChatService,
     ApiConfiguration
   ],
 })

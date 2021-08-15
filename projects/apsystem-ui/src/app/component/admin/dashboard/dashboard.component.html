@@ -1,20 +1,23 @@
 <div class="container">
 <div class="row">
+  <div class="ud-header">
+    <h2></h2>
+  </div>
 <div class="form-group search col-md-5">
-  <input type="text" class="form-control" value="" placeholder="Search">
+  <input type="text" class="form-control"  [(ngModel)]="searchTerm" placeholder="Search">
 </div>
 </div>
 
-<div class="row">
-  <div id="doctorcard" *ngFor="let dn of DoctorsandNurses" class="col-sm-3">
+<div class="row" id="doctorCard">
+  <div id="doctorcard" *ngFor="let dn of FilteredDoctorsNurses" class="col-sm-3">
   <div class="card-group">
   <div class="card">
     <div class="img-wrapper">
     <img id="propImage" *ngIf="dn.roleName == 'Doctor'" class="card-img-top" src="assets\Doctor.jpg">
     <img id="propImage" *ngIf="dn.roleName == 'Nurse'" class="card-img-top" src="assets\Nurse_Default.png">
     <ul class="list-inline text-center member-icons animate" >
-      <li class="list-inline-item">
-        <button class="btn btn-primary"><i class="fas fa-info-circle"></i></button>
+      <li class="list-inline-item" *ngIf="!loggedinDoctor()">
+        <button class="btn btn-primary"  [routerLink]="['/chat']"><i class="fas fa-comment-dots"></i></button>
       </li>
       <li class="list-inline-item">
         <button class="btn btn-primary" [routerLink]="['/bookingAppointment/'+ dn.userID]"><i class="fas fa-th-list"></i></button>
@@ -33,5 +36,4 @@
 </div>
 </div>
 </div>
-
 </div>

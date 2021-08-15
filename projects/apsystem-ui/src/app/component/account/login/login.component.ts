@@ -24,38 +24,34 @@ export class LoginComponent implements OnInit {
    constructor(private router: Router,private token: TokenStorageService,private accountService: AccountService,
                private formBuilder: FormBuilder, private authService:AuthService) { }
 
-   ngOnInit(): void {this.forms = this.formBuilder.group({
-    email: ['', Validators.required],
-    password: ['', [Validators.required]]
-
-  });
+   ngOnInit(): void {
 
   }
 
 
   // tslint:disable-next-line: typedef
-  onLogin(loginForm: NgForm){
+ async onLogin (loginForm: NgForm){
 
      this.accountService.login(loginForm.value).subscribe(
-       (response: AuthResponse) => {
-           console.warn(response);
-           const user = response;
-           if (user.success === true){
-             alertify.success('Welcome, you are logged in');
-             this.token.setToken(user.access_Token);
-             this.token.setRole(user.roleId);
-             this.token.setUserID(user.userId);
-             this.token.setUserName(user.fullName);
-             this.token.setUserEmail(user.userName);
-             this.router.navigate(['/dashboard']);
-           }
-           if (user.success === false){
-            this.router.navigate(['/login']);
-           }
-         }
-         , error => {
-           loginForm.reset('');
-           alertify.error('Error Occured: ' + error.error.appError.message);
-       });
+     (response: AuthResponse) => {
+       console.warn(response);
+       var user = response;
+       if (user.success === true) {
+         alertify.success('Welcome, you are logged in');
+         this.token.setToken(user.access_Token);
+         this.token.setRole(user.roleId);
+         this.token.setUserID(user.userId);
+         this.token.setUserName(user.fullName);
+         this.token.setUserEmail(user.userName);
+         this.router.navigate(['/dashboard']);
+       }
+       if (user.success === false) {
+         this.router.navigate(['/login']);
+       }
+     },
+     error => {
+       loginForm.reset('');
+       alertify.error('Error Occured: ' + error.error.appError.message);
+     });
    }
 }

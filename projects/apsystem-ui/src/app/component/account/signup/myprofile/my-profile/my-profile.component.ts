@@ -24,7 +24,7 @@ export class MyProfileComponent implements OnInit {
  public user: UserModel = new UserModel();
  listGender: Array<GenderModel> = [];
  loading: boolean = false;
- Updatedform : FormGroup;
+ Updatedform: FormGroup;
 
 
 
@@ -32,25 +32,23 @@ export class MyProfileComponent implements OnInit {
     this.getUserID();
     this.authservice.apiV1AuthUserbyIdGet$Json$Response({userID: this.userid}).subscribe(
       response =>{
-      console.warn(response);
-
-        this.Updatedform = this.formBuilder.group({
-          updatedPhoneNumber :[response.body.phoneNumber],
+        var user = response.body;
+      this.Updatedform = this.formBuilder.group({
+          updatedName : [user.name],
+          updatedEmail : [user.email],
+          updatedPhoneNumber : [response.body.phoneNumber],
           updatedDateOfBirth : [response.body.dateOfBirth.slice(0,10)],
           updatedGenderID : [response.body.gender],
           updatedGmcNumber : [response.body.gmcNumber],
           updatedSpeciality : [response.body.speciality],
           updatedExperience : [response.body.experience],
-          updatedAddress : [response.body.address],
-          updatedName : [response.body.name],
-          updatedEmail : [response.body.email],
-      })
+          updatedAddress : [response.body.address]
+      });
       });
 
     this.getgender();
 
   }
-
 
   getUserID(){
    return this.userid = Number(this.token.getUserID());
@@ -96,9 +94,6 @@ export class MyProfileComponent implements OnInit {
   }
 
  }
-
-
-
 
 
 }

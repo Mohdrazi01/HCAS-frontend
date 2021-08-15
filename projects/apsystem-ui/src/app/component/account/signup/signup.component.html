@@ -103,7 +103,7 @@
         </div>
         <div  class="form-group col-12">
           <input type="checkbox" required id="TnC" formControlName="checkbox"/>
-          <label for="TnC"  class="link active form-label"> Terms & Conditons</label>
+          <a for="TnC" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"  class="link active form-label"> Terms & Conditons</a>
             <span *ngIf="!userform.get('checkbox').valid && userform.get('checkbox').touched" class="error-block">
             Please tick the box.
           </span>
@@ -122,6 +122,72 @@
       </form>
     </div>
   </div>
+  </div>
+</div>
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Terms & Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="tncBody" class="modal-body">
+        <pre>
+          PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY BRFORE ACCESSING THE SERVICE
+          HCAS Operator: Raziullah Mohammmed
+          Last Updated: 14/08/2021
+
+1. INTRODUCTION. The website HCAS is a health care appointment system application. trying to fluently connect health
+care providers and patients. it is a dissertation project for the university of Sheffield Hallam. it aims to fulfill
+all the necessary aspect of a real application.
+
+2. AVAILABILITY OF THE WEBSITE. the operator will try to make this application available but cannot guarantee that
+this Website will operate continuously or without interruptions. the operator may decide to take it down after
+the completion of dissertation.
+
+3. LINKS TO AND FROM OTHER WEBSITES. You confirm that the inclusion of hyperlinks on the application does not imply
+any endorsements by operator of the material on any such websites or any association with their operators and that
+of you use these hyperlinks you will be leaving the Website. These links are to conduct survey for the dissertation.
+If you use these links you will be leaving this Application.
+
+4. INTELLECTUAL PROPERTY RIGHTS. You acknowledge that the copyright in and all other intellectual property rights in
+the Website its content and the underlying software and any related software belong to the operator.
+
+5. PRODUCTS AND SERVICES. The purpose of the Website is to promote the culture of online delivery of health
+care services. which should be accessable to everyone.
+
+6. VIRUSES. Whilst the operator tries to exclude any viruses from the application the operator cannot guarantee such
+exclusion and no liability is accepted for viruses.
+
+7. SECURITY. This applicatoon stores all its data related to providers and users on a Microsoft Azure cloud server.
+due to the nature of internet the operator cannot gurantee complete protection of your data.
+
+8. DISCLAIMER. operator may at time and for any reason correct without reason any typographical clerical or other
+error, and operator reserve the right to make any amendments and/or improvements to the Website at any time.
+
+9. WAIVER. If you breach these T&Cs operator may not take any immediate action against you.
+
+10. ENTIRE AGREEMENT. These conditions constitute the entire agreement between you and us relating to you use of the
+Application.
+
+11. MODIFICATION. You acknowledge that we may modify these conditions at any time for any reason.
+
+12. Contact:To contact us, please email us on getagp9@gmail.com.
+        </pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
 

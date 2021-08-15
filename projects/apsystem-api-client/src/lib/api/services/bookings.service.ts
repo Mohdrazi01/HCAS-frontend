@@ -5,9 +5,10 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 import { RequestBuilder } from '../request-builder';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, filter, tap } from 'rxjs/operators';
 
+import { AppointmentStatusRequest as ApSystemModelsBookingsAppointmentStatusRequest } from '../models/APSystem/Models.Bookings/appointment-status-request';
 import { AppointmentTypes as ApSystemModelsBookingsAppointmentTypes } from '../models/APSystem/Models.Bookings/appointment-types';
 import { BookingAppointment as ApSystemModelsBookingsBookingAppointment } from '../models/APSystem/Models.Bookings/booking-appointment';
 
@@ -533,6 +534,12 @@ export class BookingsService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
+
+  private _refreshNeeded$= new Subject<void>();
+  get refreshNeeded$(){
+    return this._refreshNeeded$;
+  }
+
   apiV1BookingUpdateBookingPut$Json$Response(params?: {
     id?: number;
       body?: ApSystemModelsBookingsBookingAppointment
@@ -553,6 +560,9 @@ export class BookingsService extends BaseService {
       map((r: HttpResponse<any>) => {
         return r as StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>;
       })
+      // tap( ()=>{
+      //  this._refreshNeeded$.next();
+      // })
     );
   }
 
@@ -703,6 +713,93 @@ export class BookingsService extends BaseService {
 
     return this.apiV1BookingGetAppointmentTypesGet$Json$Response(params).pipe(
       map((r: StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>) => r.body as Array<ApSystemModelsBookingsAppointmentTypes>)
+    );
+  }
+
+  /**
+   * Path part for operation apiV1BookingGetAppointmentStatusGet
+   */
+  static readonly ApiV1BookingGetAppointmentStatusGetPath = '/api/v1/Booking/GetAppointmentStatus';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1BookingGetAppointmentStatusGet$Plain()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentStatusGet$Plain$Response(params?: {
+
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentStatusGetPath, 'get');
+    if (params) {
+
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1BookingGetAppointmentStatusGet$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentStatusGet$Plain(params?: {
+
+  }): Observable<Array<ApSystemModelsBookingsAppointmentStatusRequest>> {
+
+    return this.apiV1BookingGetAppointmentStatusGet$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>) => r.body as Array<ApSystemModelsBookingsAppointmentStatusRequest>)
+    );
+  }
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiV1BookingGetAppointmentStatusGet$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentStatusGet$Json$Response(params?: {
+
+  }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>> {
+
+    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentStatusGetPath, 'get');
+    if (params) {
+
+
+    }
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'text/json'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>;
+      })
+    );
+  }
+
+  /**
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiV1BookingGetAppointmentStatusGet$Json$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiV1BookingGetAppointmentStatusGet$Json(params?: {
+
+  }): Observable<Array<ApSystemModelsBookingsAppointmentStatusRequest>> {
+
+    return this.apiV1BookingGetAppointmentStatusGet$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>) => r.body as Array<ApSystemModelsBookingsAppointmentStatusRequest>)
     );
   }
 

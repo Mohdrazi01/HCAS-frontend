@@ -11,15 +11,31 @@ import * as alertify from 'alertifyjs';
   styleUrls: ['./manage-appointments-crud.component.scss']
 })
 export class ManageAppointmentsCrudComponent implements OnInit {
+
   listofAppointments: Array<Appointment> = [];
+  filteredAppointments: Array<Appointment> = [];
   public appointmentbyDocID: AppointmentModel = new AppointmentModel();
   selectedAppointment:Appointment = new Appointment();
   doctorId: number;
+  private _searchDate:string;
+  get searchDate():string{
+   return this._searchDate;
+  }
+  set searchDate(value: string){
+   this._searchDate = value;
+   this.filteredAppointments = this.filterAppointments(value);
+  }
+
+  filterAppointments(value: string){
+  return this.listofAppointments.filter(ap=>
+    (ap.appointmentDate.toString().slice(8,10).indexOf(value)) !== -1);
+  }
   constructor(private route: Router, private token: TokenStorageService
     , private appointmentService: AppointmentService) { }
 
   ngOnInit() {
     this.doctorId = Number(this.token.getUserID());
+    this.filteredAppointments = this.listofAppointments;
     this.appointmentbyDocID.doctorID = this.doctorId;
     this.getAppointments(this.appointmentbyDocID);
 

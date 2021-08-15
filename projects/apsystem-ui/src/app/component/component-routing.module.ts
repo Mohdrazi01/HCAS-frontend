@@ -1,3 +1,6 @@
+import { AllUserAppointmentsComponent } from './userdashboard/users-mamagement-dashboard/all-user-appointments/all-user-appointments.component';
+import { ChatComponent } from './chat/chat.component';
+import { CompletedCancelledBoookingsComponent } from './bookings/completed-cancelled-boookings/completed-cancelled-boookings.component';
 import { ConfirmedBookingsComponent } from './bookings/confirmed-bookings/confirmed-bookings.component';
 import { ManageAppointmentsCrudComponent } from './appointments/manage-appointments-crud/manage-appointments-crud.component';
 import { UsersMamagementDashboardComponent } from './userdashboard/users-mamagement-dashboard/users-mamagement-dashboard.component';
@@ -29,6 +32,15 @@ const routes: Routes = [
   },
   {
     path: 'confirmedBookings', canActivateChild: [AuthGuard], component: ConfirmedBookingsComponent
+  },
+  {
+    path: 'completedBookings', canActivateChild: [AuthGuard], component: CompletedCancelledBoookingsComponent
+  },
+  {
+    path: 'chat', canActivateChild: [AuthGuard], component: ChatComponent
+  },
+  {
+    path: 'userBookings', canActivateChild: [AuthGuard], component: AllUserAppointmentsComponent
   }
 
 

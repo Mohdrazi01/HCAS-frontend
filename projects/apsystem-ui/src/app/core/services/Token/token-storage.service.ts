@@ -14,11 +14,17 @@ export class TokenStorageService {
 
   constructor(private router: Router) { }
 
-  signout()
+  async signout()
   {
     window.localStorage.clear();
-    this.router.navigate(['/home']);
+   await window.localStorage.removeItem(USER_NAME);
+   await this.router.navigate(['/home']);
   }
+
+  public async setUserName(name: string){
+    await window.localStorage.removeItem(USER_NAME);
+    await window.localStorage.setItem(USER_NAME, name);
+   }
   public setToken(token:string)
   {
     window.localStorage.removeItem(TOKEN_KEY);
@@ -62,11 +68,6 @@ export class TokenStorageService {
   public setUserEmail(userEmail: string){
     window.localStorage.removeItem(USER_EMAIL);
     window.localStorage.setItem(USER_EMAIL, userEmail);
-  }
-
-  public setUserName(name: string){
-    window.localStorage.removeItem(USER_NAME);
-    window.localStorage.setItem(USER_NAME, name);
   }
 
   public getUserID():string{

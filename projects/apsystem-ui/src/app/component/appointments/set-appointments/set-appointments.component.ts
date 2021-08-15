@@ -86,6 +86,7 @@ export class SetAppointmentsComponent implements OnInit {
     return this.loading = true;
   }
 
+
   onReset(){
 
    for(var i=0; i <= this.slectedSlots.length-1; i++){
@@ -138,5 +139,8 @@ export class SetAppointmentsComponent implements OnInit {
 
   }
 
+   goBack(){
+    this.router.navigate(['/dashboard']);
+   }
 
 }

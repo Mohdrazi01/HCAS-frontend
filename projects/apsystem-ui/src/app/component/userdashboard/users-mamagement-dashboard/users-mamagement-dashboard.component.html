@@ -1,3 +1,87 @@
-<p>
-  users-mamagement-dashboard works!
-</p>
+
+<div class="container">
+  <div class="title">
+      <h3>List of active boookings.</h3>
+   </div>
+  <div class="search">
+      <div class="form-group search col-md-5">
+        <input type="text" class="form-control" value="" placeholder="Search">
+      </div>
+    </div>
+    <div>
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Doctor_Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Start_Time</th>
+        <th scope="col">End_Time</th>
+        <th scope="col">Type</th>
+        <th scope="col">Status</th>
+        <th scope="col">Phone_Number</th>
+        <th scope="col">Issue</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row" *ngFor="let appointmemts of listofUpComingBookings">
+        <td scope="row">{{appointmemts.doctorName}}</td>
+        <td scope="row">{{appointmemts.appointmentDate| date:'dd/MM/yyyy'}}</td>
+        <td scope="row">{{appointmemts.appointmentStartTime}}</td>
+        <td scope="row">{{appointmemts.appointmentEndTime}}</td>
+        <td scope="row">{{appointmemts.appointmentType}}</td>
+        <td scope="row">{{appointmemts.apStatus}}</td>
+        <td scope="row">{{appointmemts.phoneNumber}}</td>
+        <td scope="row" id="issue">{{appointmemts.problemDiscription}}</td>
+        <td><button type="submit" class="btn btn-primary"data-toggle="modal" data-target="#exampleModalCenter" (click)="updateAppointment(appointmemts)">
+          <i class="fas fa-edit"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="card">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-calendar-plus"></i> Update Booking </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <tr><h5 style="font:bold;">Appointment Date: {{selectedAppointment.appointmentDate| date}}</h5></tr>
+              <tr><h6>Start Time: {{selectedAppointment.appointmentStartTime}} &nbsp; End Time: {{selectedAppointment.appointmentEndTime}}</h6></tr>
+         </div>
+         <form #updateform="ngForm" (ngSubmit)="updateAp()" >
+          <div class="modal-body">
+            <label class="form-label">Update Date Time</label>
+           <select onfocus='this.size=5;'
+           onblur='this.size=1;'
+           onchange='this.size=1; this.blur();' class="form-control" (change)="onSelect($event)"  [(ngModel)]="selectedbooking.appointmentID" >
+             <option class="table-striped">&nbsp; &nbsp;Date &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Start Time &nbsp;  End Time</option>
+             <option *ngFor="let appointmemts of listofAppointments" value={{appointmemts.appointmentID}}>{{appointmemts.appointmentDate| date:'dd/MM/yyyy'}} &nbsp; &nbsp;{{appointmemts.appointmentStartTime}}&nbsp; &nbsp;{{appointmemts.appointmentEndTime}}</option>
+            </select>
+              </div>
+                  <div class="modal-body">
+                      <label class="form-label">Phone Number</label>
+                      <input id="phoneNumber" name="PhoneNumber" type="text" class="form-control" [(ngModel)]="selectedbooking.phoneNumber"/>
+                  </div>
+                  <div class="modal-body">
+                    <label class="form-label">Problem Discription</label>
+                    <textarea id="problemDiscription" name="ProblemDiscription" type="text" class="form-control" [(ngModel)]="selectedbooking.problemDiscription"></textarea>
+                  </div>
+                <div class="modal-footer">
+                    <button type="submit"  class="btn btn-primary" id="btnAddStream">Update Booking</button>
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <div id="loading" *ngIf="loading" class="spinner-border spinner-border-sm" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div> -->
+                </div>
+          </form>
+          </div>
+        </div>
+     </div>
+  </div>
+</div>

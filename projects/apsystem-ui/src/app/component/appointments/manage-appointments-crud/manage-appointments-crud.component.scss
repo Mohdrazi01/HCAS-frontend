@@ -7,26 +7,64 @@
 }
 
 .container{
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
   position: relative;
-  max-height: 600px;
-
+  padding-bottom: 100px; /* height of your footer */
 }
+.container h3, tr, th{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+}
+
 
 table
 {
-  height: 200px;
+
   position: relative;
   top:70px;
-  max-height: fit-content;
-  overflow-x: auto;
-
+  max-height: 700px;
+  border-collapse:collapse;
+  overflow-x:scroll;
+  width: 700px;
+  left:160px;
+  font-weight: bold;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(115, 73, 192, 0.507);
 }
+
+.title{
+position: relative;
+top:10px;
+border: 2px #ccc Solid;
+padding :10px;
+}
+.title h3{
+  position: relative;
+  left:300px;
+}
+
+.table tr{
+  height: 10px;
+}
+.row{
+  height: 20px;
+}
+
 
 .search{
   position: relative;
   left:140px;
   top:30px;
+
 }
 .danger{
   background-color: red;
+}
+#searchpadding{
+  border: 1px #ccc Solid;
+  padding :10px;
+
 }

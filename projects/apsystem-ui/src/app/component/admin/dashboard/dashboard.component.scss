@@ -10,6 +10,10 @@
   height: 1000px;
 
 }
+.container h6{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+}
 
 .row{
   position: relative;
@@ -64,9 +68,16 @@ box-shadow:5px 5px 15px rgb(155, 155, 236);
 }
 
 .search{
+
   position:relative;
-  bottom: 60px;
+  bottom: 40px;
   left: 300px;
+
+}
+.search input{
+
+ color: blue;
+ background-color: rgba(140, 140, 214, 0.171);
 
 }
 

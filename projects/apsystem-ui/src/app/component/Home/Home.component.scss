@@ -4,11 +4,11 @@
 
    height:300px;
    border-radius: 5px;
-   background: white;
+   background: rgba(204, 117, 117, 0);
    box-shadow:5px 5px 15px rgb(155, 155, 236);
    text-align: center;
    position: relative;
-   width: max-content;
+   width: 200px;
    overflow-x: auto;
    background-color: rgba(56, 49, 49, 0.082);
 
@@ -18,6 +18,7 @@
   height: 100%;
   min-height: 100vh; /* will cover the 100% of viewport */
   overflow: hidden;
+  background-color: rgb(218, 235, 145);
 }
 #propImage{
   height: 350px;
@@ -30,10 +31,12 @@
 .card-header{
   position: relative;
   left: 150px;
-  top:30px;
-  height:375px;
+  top:20px;
+  height:380px;
   width: 800px;
   border: skyblue;
+  border: 3px #ccc solid;
+  padding: auto;
 }
 #card1 scroll{
   background-color: darkgray;
@@ -80,7 +83,7 @@
 #card3{
   height:300px;
   border-radius: 5px;
-  background: white;
+  background: rgba(12, 3, 3, 0);
   box-shadow:5px 5px 15px rgb(155, 155, 236);
   text-align: center;
   position: relative;
@@ -91,10 +94,14 @@
 
 .card-image{
   grid-area: image;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
 }
 
 .card-text{
   grid-area:text;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
 }
 
 .card-stats{
@@ -115,5 +122,43 @@
   position: relative;
   left:800px;
   bottom: 450px;
+}
+.container{
+  height: 1000px;
+}
+.container h4, h5, h6 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+}
+.info{
+  position: relative;
+  top:70px;
+  left:10px;
+  border: 3px #ccc Solid;
+  padding: 10px;
+}
+.info h5{
+  position: relative;
+  left: 230px;
+ font-family: 'Quicksand', sans-serif;
+ font-weight: 300;
+}
+
+#card2 table{
+  background-color: rgb(74, 113, 185);
+}
+
+#card3 table{
+  background-color: rgb(243, 189, 139);
+}
+#card3 .card-image{
+  background-color: rgb(180, 96, 44);
+}
+
+#card2 .card-image{
+  background-color: rgba(159, 155, 214, 0.486);
+}
+#card1 .card-image{
+  background-color: rgba(119, 207, 19, 0.432);
 }
 
