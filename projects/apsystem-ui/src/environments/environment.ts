@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: "https://localhost:5001",
+  apiBaseUrl:"https://hcas-api.azurewebsites.net",
+  //'https://localhost:5001',
   appInsights: {
-    instrumentationKey: "14c68382-bf0a-4dab-b0ca-c9d07c8f18ed",
+    instrumentationKey: "9a12cc10-c493-4168-b50b-4b6557a8e125",
     disableAjaxTracking: false,
     disableExceptionTracking: false,
     enableAutoRouteTracking: true,

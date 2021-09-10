@@ -1,3 +1,4 @@
+import { environment } from './../../../../../apsystem-ui/src/environments/environment';
 /* tslint:disable */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
@@ -20,7 +21,7 @@ export class ChatService extends BaseService {
   ) {
     super(config, http);
   }
-
+  baseUrl = environment.apiBaseUrl;
   /**
    * Path part for operation apiV1ChatSendPost
    */
@@ -36,7 +37,7 @@ export class ChatService extends BaseService {
       body?: ApSystemCoreControllersChatReqDtoMessageDto
   }): Observable<StrictHttpResponse<void>> {
 
-    const rb = new RequestBuilder(this.rootUrl, ChatService.ApiV1ChatSendPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, ChatService.ApiV1ChatSendPostPath, 'post');
     if (params) {
 
 

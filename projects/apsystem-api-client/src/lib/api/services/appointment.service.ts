@@ -1,3 +1,4 @@
+import { environment } from './../../../../../apsystem-ui/src/environments/environment';
 /* tslint:disable */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
@@ -22,7 +23,7 @@ export class AppointmentService extends BaseService {
   ) {
     super(config, http);
   }
-
+  baseUrl = environment.apiBaseUrl;
   /**
    * Path part for operation apiV1AuthAddSlotsPost
    */
@@ -38,7 +39,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointmentSlots
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentSlots>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthAddSlotsPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthAddSlotsPostPath, 'post');
     if (params) {
 
 
@@ -80,7 +81,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointmentSlots
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentSlots>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthAddSlotsPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthAddSlotsPostPath, 'post');
     if (params) {
 
 
@@ -127,7 +128,7 @@ export class AppointmentService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAppointmentAppointmentSlots>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthApSlotsGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthApSlotsGetPath, 'get');
     if (params) {
 
 
@@ -168,7 +169,7 @@ export class AppointmentService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAppointmentAppointmentSlots>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthApSlotsGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthApSlotsGetPath, 'get');
     if (params) {
 
 
@@ -215,7 +216,7 @@ export class AppointmentService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentSlots>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthApSlotsbyidPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthApSlotsbyidPostPath, 'post');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -259,7 +260,7 @@ export class AppointmentService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentSlots>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthApSlotsbyidPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthApSlotsbyidPostPath, 'post');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -308,7 +309,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointmentSlots
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentSlots>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthUpdateApSlotPutPath, 'put');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthUpdateApSlotPutPath, 'put');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -353,7 +354,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointmentSlots
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentSlots>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthUpdateApSlotPutPath, 'put');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthUpdateApSlotPutPath, 'put');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -402,7 +403,7 @@ export class AppointmentService extends BaseService {
       body?: number
   }): Observable<StrictHttpResponse<void>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthDeleteSlotDeletePath, 'delete');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthDeleteSlotDeletePath, 'delete');
     if (params) {
 
 
@@ -449,7 +450,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointments>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthCreateApPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthCreateApPostPath, 'post');
     if (params) {
 
 
@@ -491,7 +492,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointments>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthCreateApPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthCreateApPostPath, 'post');
     if (params) {
 
 
@@ -538,7 +539,7 @@ export class AppointmentService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAppointmentAppointmentwithSlotsjoin>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthGetAppointmentGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthGetAppointmentGetPath, 'get');
     if (params) {
 
 
@@ -579,7 +580,7 @@ export class AppointmentService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAppointmentAppointmentwithSlotsjoin>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthGetAppointmentGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthGetAppointmentGetPath, 'get');
     if (params) {
 
 
@@ -625,7 +626,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAppointmentAppointmentwithSlotsjoin>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthApbyDocIdPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthApbyDocIdPostPath, 'post');
     if (params) {
 
 
@@ -667,7 +668,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAppointmentAppointmentwithSlotsjoin>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthApbyDocIdPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthApbyDocIdPostPath, 'post');
     if (params) {
 
 
@@ -714,7 +715,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentwithSlotsjoin>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthAppointmentByIdPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthAppointmentByIdPostPath, 'post');
     if (params) {
 
 
@@ -756,7 +757,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointmentwithSlotsjoin>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthAppointmentByIdPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthAppointmentByIdPostPath, 'post');
     if (params) {
 
 
@@ -804,7 +805,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointments>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthEditAppointmentPutPath, 'put');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthEditAppointmentPutPath, 'put');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -849,7 +850,7 @@ export class AppointmentService extends BaseService {
       body?: ApSystemModelsAppointmentAppointments
   }): Observable<StrictHttpResponse<ApSystemModelsAppointmentAppointments>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthEditAppointmentPutPath, 'put');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthEditAppointmentPutPath, 'put');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -899,7 +900,7 @@ export class AppointmentService extends BaseService {
 
   }): Observable<StrictHttpResponse<void>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AppointmentService.ApiV1AuthDeleteAppointmentDeletePath, 'delete');
+    const rb = new RequestBuilder(this.baseUrl, AppointmentService.ApiV1AuthDeleteAppointmentDeletePath, 'delete');
     if (params) {
 
       rb.query('id', params.id, {});

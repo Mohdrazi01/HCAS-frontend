@@ -63,10 +63,7 @@ export class HttpRequestResponseInterceptorService implements HttpInterceptor {
   private handle401Error(error:any): Observable<HttpEvent<any>> {
     this.tokenService.signout();
     this.router.navigate(['/login']);
-    alertify.error(error.error.appError.description, '', {
-      duration: 5000,
-      panelClass:['red-snackbar'],
-    });
+    alertify.error(error.error.appError.description, 3000);
     throw null;
   }
 
@@ -80,44 +77,35 @@ export class HttpRequestResponseInterceptorService implements HttpInterceptor {
         {
         let arr = message.split(':');
 
-        alertify.success(arr[arr.length-1], 2000);
+        alertify.success(arr[arr.length - 1],3000);
         }
-      }, (index-1)* (2000+300));
+      },);
   });
 
    }
    else
    {
-    alertify.error(arrerror[arrerror.length-1], 5000);
+    alertify.error(arrerror[arrerror.length - 1],3000);
    }
     throw null;
   }
 
-  private handle404Error(error:any): Observable<HttpEvent<any>> {
-    alertify.error(error.error.appError.description, 5000);
+  private handle404Error(error: any): Observable<HttpEvent<any>> {
+    alertify.error(error.error.appError.description,3000);
     throw null;
   }
 
-  private handle500Error(error:any): Observable<HttpEvent<any>> {
-    alertify.error(error.error.appError.description, '', {
-      duration: 5000,
-      panelClass:['red-snackbar'],
-    });
+  private handle500Error(error: any): Observable<HttpEvent<any>> {
+    alertify.error(error.error.appError.description,3000);
     throw null;
   }
 
   private handle504Error(error:any): Observable<HttpEvent<any>> {
-    alertify.error(error.error.appError.description, '', {
-      duration: 5000,
-      panelClass:['red-snackbar'],
-    });
+    alertify.error(error.error.appError.description,3000);
     throw null;
   }
   private handledefaultError(error:any): Observable<HttpEvent<any>> {
-    alertify.error('Something went wrong.', '', {
-      duration: 5000,
-      panelClass:['red-snackbar'],
-    });
+    alertify.error('Something went wrong.',3000);
     throw null;
   }
 

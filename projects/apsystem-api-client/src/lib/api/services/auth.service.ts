@@ -1,3 +1,4 @@
+import { environment } from './../../../../../apsystem-ui/src/environments/environment';
 /* tslint:disable */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
@@ -28,7 +29,7 @@ export class AuthService extends BaseService {
   ) {
     super(config, http);
   }
-
+  baseUrl = environment.apiBaseUrl;
   /**
    * Path part for operation apiV1AuthSignupPost
    */
@@ -44,7 +45,7 @@ export class AuthService extends BaseService {
       body?: ApSystemModelsAuthRegisterUserRequest
   }): Observable<StrictHttpResponse<ApSystemModelsAuthRegisterUserResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthSignupPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthSignupPostPath, 'post');
     if (params) {
 
 
@@ -86,7 +87,7 @@ export class AuthService extends BaseService {
       body?: ApSystemModelsAuthRegisterUserRequest
   }): Observable<StrictHttpResponse<ApSystemModelsAuthRegisterUserResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthSignupPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthSignupPostPath, 'post');
     if (params) {
 
 
@@ -133,7 +134,7 @@ export class AuthService extends BaseService {
       body?: ApSystemModelsAuthAuthRequest
   }): Observable<StrictHttpResponse<ApSystemModelsAuthAuthResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthLoginPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthLoginPostPath, 'post');
     if (params) {
 
 
@@ -175,7 +176,7 @@ export class AuthService extends BaseService {
       body?: ApSystemModelsAuthAuthRequest
   }): Observable<StrictHttpResponse<ApSystemModelsAuthAuthResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthLoginPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthLoginPostPath, 'post');
     if (params) {
 
 
@@ -222,7 +223,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllUsersGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetAllUsersGetPath, 'get');
     if (params) {
 
 
@@ -263,7 +264,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllUsersGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetAllUsersGetPath, 'get');
     if (params) {
 
 
@@ -310,7 +311,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUserbyIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthUserbyIdGetPath, 'get');
     if (params) {
 
       rb.query('userID', params.userID, {});
@@ -354,7 +355,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUserbyIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthUserbyIdGetPath, 'get');
     if (params) {
 
       rb.query('userID', params.userID, {});
@@ -403,7 +404,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUsersbyRoleIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthUsersbyRoleIdGetPath, 'get');
     if (params) {
 
       rb.query('roleID', params.roleID, {});
@@ -447,7 +448,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUsersbyRoleIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthUsersbyRoleIdGetPath, 'get');
     if (params) {
 
       rb.query('roleID', params.roleID, {});
@@ -495,7 +496,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetDoctorsandNursesGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetDoctorsandNursesGetPath, 'get');
     if (params) {
 
 
@@ -536,7 +537,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthUserDetailsResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetDoctorsandNursesGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetDoctorsandNursesGetPath, 'get');
     if (params) {
 
 
@@ -582,7 +583,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllRolesGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetAllRolesGetPath, 'get');
     if (params) {
 
 
@@ -623,7 +624,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthRoleResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllRolesGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetAllRolesGetPath, 'get');
     if (params) {
 
 
@@ -669,7 +670,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllGendersGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetAllGendersGetPath, 'get');
     if (params) {
 
 
@@ -710,7 +711,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsAuthGenderResponse>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthGetAllGendersGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthGetAllGendersGetPath, 'get');
     if (params) {
 
 
@@ -757,7 +758,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthEmailConfirmationPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthEmailConfirmationPostPath, 'post');
     if (params) {
 
       rb.query('emailActivationCode', params.emailActivationCode, {});
@@ -801,7 +802,7 @@ export class AuthService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsAuthEmailConfirmationResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthEmailConfirmationPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthEmailConfirmationPostPath, 'post');
     if (params) {
 
       rb.query('emailActivationCode', params.emailActivationCode, {});
@@ -850,7 +851,7 @@ export class AuthService extends BaseService {
       body?: ApSystemModelsAuthUserDetailsRequest
   }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUpdateUserDetailsPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthUpdateUserDetailsPostPath, 'post');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -895,7 +896,7 @@ export class AuthService extends BaseService {
       body?: ApSystemModelsAuthUserDetailsRequest
   }): Observable<StrictHttpResponse<ApSystemModelsAuthUserDetailsResponse>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthService.ApiV1AuthUpdateUserDetailsPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, AuthService.ApiV1AuthUpdateUserDetailsPostPath, 'post');
     if (params) {
 
       rb.query('id', params.id, {});

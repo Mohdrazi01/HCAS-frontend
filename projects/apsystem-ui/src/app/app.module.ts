@@ -1,6 +1,8 @@
+import { BaseService } from './../../../apsystem-api-client/src/lib/api/base-service';
 import { TokenStorageService } from './core/services/Token/token-storage.service';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
 import {ApiModule} from '@api';
 import { environment } from '@environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +11,7 @@ import {HttpRequestResponseInterceptorService} from './core/interceptors/http-re
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LayoutComponent } from './shared/layout/layout.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -17,7 +19,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     LayoutComponent
-
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ApiModule.forRoot({rootUrl: environment.apiBaseUrl}),
+    ApiModule.forRoot({rootUrl: environment.apiBaseUrl})
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

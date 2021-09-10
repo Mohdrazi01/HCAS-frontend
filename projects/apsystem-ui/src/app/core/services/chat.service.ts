@@ -11,13 +11,13 @@ import { Subject, Observable } from 'rxjs';
 export class ChatService {
 
   private connection: any = new signalR.HubConnectionBuilder()
-  .withUrl("https://localhost:5001/api/v1/auth/ChatHub",{
+  .withUrl("https://hcas-api.azurewebsites.net/api/v1/auth/ChatHub",{
    // accessTokenFactory: () =>'token? '+ this.token.getToken(),
     //skipNegotiation: true,
     //transport: signalR.HttpTransportType.WebSockets
   }).configureLogging(signalR.LogLevel.Information).build();
 
-  readonly POST_URL = "https://localhost:5001/api/v1/Chat/send"
+  readonly POST_URL = "https://hcas-api.azurewebsites.net/api/v1/Chat/send"
   private receivedmessageObject:Chat = new Chat();
   private sharedObj = new Subject<Chat>();
 

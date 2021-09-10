@@ -12,12 +12,14 @@ import { SetAppointmentsComponent } from './appointments/set-appointments/set-ap
 import { BookingsManagementComponent } from './bookings/bookings-management/bookings-management.component';
 import { HomeComponent } from './Home/Home.component';
 import { NgModule } from '@angular/core';
+import {ApiModule} from '@api';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ComponentRoutingModule } from './component-routing.module';
 import { LoginComponent } from './account/login/login.component';
 import { SignupComponent } from './account/signup/signup.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { environment } from '@environments/environment';
 
 
 
@@ -47,6 +49,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    //ApiModule.forRoot({rootUrl: environment.apiBaseUrl})
   ]
 })
 export class ComponentModule { }
+//export class AppModule { }

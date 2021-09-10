@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './../../../core/services/Token/token-storage.service';
-import { AppointmentService } from './../../../../../../apsystem-api-client/src/lib/api/services/appointment.service';
+import { AppointmentService } from '../../../core/Service1/appointment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointment } from '@core/models/appointment';
 import { AppointmentModel } from '@core/models/Appointment-model';
@@ -34,6 +34,7 @@ export class ManageAppointmentsCrudComponent implements OnInit {
     , private appointmentService: AppointmentService) { }
 
   ngOnInit() {
+
     this.doctorId = Number(this.token.getUserID());
     this.filteredAppointments = this.listofAppointments;
     this.appointmentbyDocID.doctorID = this.doctorId;

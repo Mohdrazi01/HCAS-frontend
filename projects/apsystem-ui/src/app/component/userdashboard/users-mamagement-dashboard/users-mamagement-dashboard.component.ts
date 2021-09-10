@@ -42,9 +42,9 @@ export class UsersMamagementDashboardComponent implements OnInit {
   ngOnInit() {
     this.userID = Number(this.token.getUserID());
 
-    this.bookingservice.refreshNeeded$.subscribe(()=>{
-      this.GetBookings(this.userID);
-    });
+    // this.bookingservice.refreshNeeded$.subscribe(()=>{
+    //   this.GetBookings(this.userID);
+    // });
 
     this.GetBookings(this.userID);
     //this.GetupComingBookings(this.listofbookings);

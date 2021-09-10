@@ -2,10 +2,10 @@ import { AppointmentType } from '../../../core/models/appointment-type';
 import { TokenStorageService } from './../../../core/services/Token/token-storage.service';
 import { BookingModel } from './../../../core/models/booking-model';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BookingsService } from './../../../../../../apsystem-api-client/src/lib/api/services/bookings.service';
+import { BookingsService } from '../../../core/Service1/bookings.service';
 import { AppointmentModel } from './../../../core/models/Appointment-model';
-import { AppointmentService } from './../../../../../../apsystem-api-client/src/lib/api/services/appointment.service';
-import { AuthService } from './../../../../../../apsystem-api-client/src/lib/api/services/auth.service';
+import { AppointmentService } from '../../../core/Service1/appointment.service';
+import { AuthService } from '../../../core/Service1/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '@core/models/user-model';
@@ -138,10 +138,10 @@ export class BookingsManagementComponent implements OnInit {
      this.loading = true;
      this.bookingservice.apiV1BookingCreateBookingPost$Json$Response({body:newBooking}).subscribe(
        response => {
-         //console.warn(response.body);
+         alertify.success(response.body);
          this.bookingForm.reset();
          window.location.reload();
-         alertify.success('booking created successfully');
+         alertify.success('booking created successfully',3000);
          return this.loading = false;
        }
      // tslint:disable-next-line: no-unused-expression
@@ -157,6 +157,4 @@ export class BookingsManagementComponent implements OnInit {
      return this.loading = false;
    }
   }
-
-
 }

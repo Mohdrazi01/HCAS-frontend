@@ -1,11 +1,11 @@
 import { AppointmentStatus } from './../../../core/models/appointment-status';
 import { BookingModel } from './../../../core/models/booking-model';
 import { UserModel } from '@core/models/user-model';
-import { AuthService } from '@api';
+import { AuthService } from '../../../core/Service1/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppointmentService } from 'projects/apsystem-api-client/src/lib/api/services/appointment.service';
-import { BookingsService } from 'projects/apsystem-api-client/src/lib/api/services/bookings.service';
+import { AppointmentService } from '../../../core/Service1/appointment.service';
+import { BookingsService } from '../../../core/Service1/bookings.service';
 import { FormBuilder } from '@angular/forms';
 import { TokenStorageService } from '@core/services/Token/token-storage.service';
 import * as alertify from 'alertifyjs';

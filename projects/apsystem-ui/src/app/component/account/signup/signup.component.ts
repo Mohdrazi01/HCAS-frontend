@@ -1,5 +1,5 @@
 import { GenderModel } from '@core/models/gender-model';
-import { PassSupplierResponse } from './../../../../../../apsystem-api-client/src/lib/api/models/SampleCube/RFQ.Models.RFQ/pass-supplier-response';
+//import { PassSupplierResponse } from './../../../../../../apsystem-api-client/src/lib/api/models/SampleCube/RFQ.Models.RFQ/pass-supplier-response';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { RegisterUserRequest } from '@core/models/register-user-request';

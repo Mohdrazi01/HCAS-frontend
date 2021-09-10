@@ -1,4 +1,4 @@
-import { AuthService } from '@api';
+import { AuthService } from '../../../../../core/Service1/auth.service';
 import { EmailModel } from './../../../../../core/models/email-model';
 import { AccountService } from '@core/services/account.service';
 import { Component, OnInit } from '@angular/core';
@@ -46,11 +46,11 @@ export class EmailConfirmComponent implements OnInit {
     this.authservice.apiV1AuthEmailConfirmationPost$Json$Response({emailActivationCode: this.emailActivationCode}).subscribe(
             (response: any) => {
               console.warn(response);
-              alertify.success(response.body, 3000);
+              alertify.success(response.body);
               this.emailconfirmed = true;
                 },
                 (error: any) => {
-                    alertify('Unable to confirm email' + error, 3000);
+                    alertify('Unable to confirm email' + error);
             }
         );
 

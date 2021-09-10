@@ -4,6 +4,7 @@ import { BookingsManagementComponent } from './component/bookings/bookings-manag
 import { SetAppointmentsComponent } from './component/appointments/set-appointments/set-appointments.component';
 import { EmailConfirmComponent } from './component/account/signup/email-Confirm/email-confirm/email-confirm.component';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from './component/account/login/login.component';
 import {SignupComponent} from './component/account/signup/signup.component';

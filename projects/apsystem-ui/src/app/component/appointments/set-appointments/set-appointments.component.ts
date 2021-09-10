@@ -2,7 +2,7 @@ import { AppointmentModel } from './../../../core/models/Appointment-model';
 import { AppointmentUiService } from './../../../core/services/appointmentUi.service';
 import { TokenStorageService } from './../../../core/services/Token/token-storage.service';
 import { SlotModel } from './../../../core/models/Slot-model';
-import { AppointmentService } from './../../../../../../apsystem-api-client/src/lib/api/services/appointment.service';
+import { AppointmentService } from '../../../core/Service1/appointment.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';

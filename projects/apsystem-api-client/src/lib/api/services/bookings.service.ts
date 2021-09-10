@@ -5,12 +5,13 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 import { RequestBuilder } from '../request-builder';
-import { Observable, Subject } from 'rxjs';
-import { map, filter, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 import { AppointmentStatusRequest as ApSystemModelsBookingsAppointmentStatusRequest } from '../models/APSystem/Models.Bookings/appointment-status-request';
 import { AppointmentTypes as ApSystemModelsBookingsAppointmentTypes } from '../models/APSystem/Models.Bookings/appointment-types';
 import { BookingAppointment as ApSystemModelsBookingsBookingAppointment } from '../models/APSystem/Models.Bookings/booking-appointment';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,7 @@ export class BookingsService extends BaseService {
   ) {
     super(config, http);
   }
-
+  baseUrl = environment.apiBaseUrl;
   /**
    * Path part for operation apiV1BookingGetAllBookingsGet
    */
@@ -38,7 +39,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAllBookingsGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetAllBookingsGetPath, 'get');
     if (params) {
 
 
@@ -79,7 +80,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAllBookingsGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetAllBookingsGetPath, 'get');
     if (params) {
 
 
@@ -125,7 +126,7 @@ export class BookingsService extends BaseService {
       body?: ApSystemModelsBookingsBookingAppointment
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingCreateBookingPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingCreateBookingPostPath, 'post');
     if (params) {
 
 
@@ -167,7 +168,7 @@ export class BookingsService extends BaseService {
       body?: ApSystemModelsBookingsBookingAppointment
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingCreateBookingPostPath, 'post');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingCreateBookingPostPath, 'post');
     if (params) {
 
 
@@ -215,7 +216,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdGetPath, 'get');
     if (params) {
 
       rb.query('bookingbyUserid', params.bookingbyUserid, {});
@@ -259,7 +260,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetBookingsbyUserIdGetPath, 'get');
     if (params) {
 
       rb.query('bookingbyUserid', params.bookingbyUserid, {});
@@ -308,7 +309,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdGetPath, 'get');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -352,7 +353,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsBookingAppointment>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetBookingsbyDoctorIdGetPath, 'get');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -401,7 +402,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetBookingsbyIdGetPath, 'get');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -445,7 +446,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetBookingsbyIdGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetBookingsbyIdGetPath, 'get');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -494,7 +495,7 @@ export class BookingsService extends BaseService {
       body?: ApSystemModelsBookingsBookingAppointment
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingUpdateBookingPutPath, 'put');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingUpdateBookingPutPath, 'put');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -534,18 +535,12 @@ export class BookingsService extends BaseService {
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-
-  private _refreshNeeded$= new Subject<void>();
-  get refreshNeeded$(){
-    return this._refreshNeeded$;
-  }
-
   apiV1BookingUpdateBookingPut$Json$Response(params?: {
     id?: number;
       body?: ApSystemModelsBookingsBookingAppointment
   }): Observable<StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingUpdateBookingPutPath, 'put');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingUpdateBookingPutPath, 'put');
     if (params) {
 
       rb.query('id', params.id, {});
@@ -560,9 +555,6 @@ export class BookingsService extends BaseService {
       map((r: HttpResponse<any>) => {
         return r as StrictHttpResponse<ApSystemModelsBookingsBookingAppointment>;
       })
-      // tap( ()=>{
-      //  this._refreshNeeded$.next();
-      // })
     );
   }
 
@@ -597,7 +589,7 @@ export class BookingsService extends BaseService {
       body?: number
   }): Observable<StrictHttpResponse<void>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingDeleteBookingDeletePath, 'delete');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingDeleteBookingDeletePath, 'delete');
     if (params) {
 
 
@@ -644,7 +636,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentTypesGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetAppointmentTypesGetPath, 'get');
     if (params) {
 
 
@@ -685,7 +677,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentTypes>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentTypesGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetAppointmentTypesGetPath, 'get');
     if (params) {
 
 
@@ -731,7 +723,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentStatusGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetAppointmentStatusGetPath, 'get');
     if (params) {
 
 
@@ -772,7 +764,7 @@ export class BookingsService extends BaseService {
 
   }): Observable<StrictHttpResponse<Array<ApSystemModelsBookingsAppointmentStatusRequest>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, BookingsService.ApiV1BookingGetAppointmentStatusGetPath, 'get');
+    const rb = new RequestBuilder(this.baseUrl, BookingsService.ApiV1BookingGetAppointmentStatusGetPath, 'get');
     if (params) {
 
 

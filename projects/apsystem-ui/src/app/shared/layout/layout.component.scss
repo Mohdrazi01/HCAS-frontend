@@ -30,3 +30,33 @@ footer {
   border: 0.5px #ccc solid;
   padding: 3.5px;
 }
+#tncBody {
+  text-align: justify;
+  width:1000px;
+}
+.modal-content{
+  width:1050px;
+  height: 550px;
+  overflow-x: scroll;
+}
+
+.modal-dialog{
+  position:relative;
+  right:250px;
+}
+
+.carousel-control-next-icon{
+
+  background-color: blue;
+}
+.carousel-control-prev-icon{
+  background-color: blue;
+}
+#propImage{
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  position: relative;
+
+}
+

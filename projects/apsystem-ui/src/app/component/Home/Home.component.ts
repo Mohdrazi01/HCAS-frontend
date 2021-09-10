@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { AppointmentUiService } from './../../core/services/appointmentUi.service';
-import { AppointmentService } from './../../../../../apsystem-api-client/src/lib/api/services/appointment.service';
+import { AppointmentService } from '../../core/Service1/appointment.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Appointment } from '@core/models/appointment';
-import { AuthService } from '@api';
+import { AuthService } from '../../core/Service1/auth.service';
 import { request } from 'http';
 import { UserModel } from '@core/models/user-model';
 

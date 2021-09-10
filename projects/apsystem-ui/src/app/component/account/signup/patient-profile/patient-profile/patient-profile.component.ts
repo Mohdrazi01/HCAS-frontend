@@ -3,7 +3,7 @@ import { UserModel } from './../../../../../core/models/user-model';
 import { AccountService } from './../../../../../core/services/account.service';
 import { TokenStorageService } from '@core/services/Token/token-storage.service';
 import { Router } from '@angular/router';
-import { AuthService } from '@api';
+import { AuthService } from '../../../../../core/Service1/auth.service';
 import { GenderModel } from '@core/models/gender-model';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import * as alertify from 'alertifyjs';

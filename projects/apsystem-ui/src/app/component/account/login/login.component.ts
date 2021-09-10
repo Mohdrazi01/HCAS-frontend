@@ -1,4 +1,4 @@
-import { AuthService } from '@api';
+import { AuthService } from '../../../core/Service1/auth.service';
 import { AuthResponse } from './../../../../../../apsystem-api-client/src/lib/api/models/APSystem/Models.Auth/auth-response';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   //forgotpasswordform: FormGroup;
-
 
    constructor(private router: Router,private token: TokenStorageService,private accountService: AccountService,
                private formBuilder: FormBuilder, private authService:AuthService) { }

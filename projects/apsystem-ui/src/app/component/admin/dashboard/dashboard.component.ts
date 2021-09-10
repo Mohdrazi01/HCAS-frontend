@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { UserModel } from './../../../core/models/user-model';
-import { AuthService } from '@api';
+import { AuthService } from '../../../core/Service1/auth.service';
 import { Component, OnInit, Input} from '@angular/core';
 import { createElementCssSelector } from '@angular/compiler';
 import { TokenStorageService } from '@core/services/Token/token-storage.service';
